@@ -1,4 +1,3 @@
-
 ---
 title: "About me"
 author: "Your name goes here"
