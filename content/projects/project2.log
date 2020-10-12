@@ -785,9 +785,23 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@cntb=\count330
 \multirow@dima=\skip87
 \bigstrutjot=\dimen290
+) (/Users/Hanna/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen291
+\WF@size=\dimen292
+\c@WF@wrappedlines=\count331
+\WF@box=\box78
+\WF@everypar=\toks42
+Package: wrapfig 2003/01/31  v 3.6
+) (/Users/Hanna/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count332
+\float@exts=\toks43
+\float@box=\box79
+\@float@everytoks=\toks44
+\@floatcapt=\box80
 )
 
-! LaTeX Error: File `wrapfig.sty' not found.
+! LaTeX Error: File `colortbl.sty' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
@@ -796,13 +810,13 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.98 \usepackage
-                {float}^^M 
+l.100 \usepackage
+                 {pdflscape}^^M 
 Here is how much of TeX's memory you used:
- 31456 strings out of 479445
- 621338 string characters out of 5880305
- 991535 words of memory out of 5000000
- 50321 multiletter control sequences out of 15000+600000
+ 31575 strings out of 479445
+ 622959 string characters out of 5880305
+ 992665 words of memory out of 5000000
+ 50432 multiletter control sequences out of 15000+600000
  535728 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  107i,0n,110p,546b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
