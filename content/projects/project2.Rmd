@@ -1,6 +1,7 @@
 ---
 name: Hanna
 surname: Zimmer
+title: About me
 position: "MFA Student @ London Business School"
 address: "London Business School "
 email: "hzimmer.mfa2021@london.edu"
