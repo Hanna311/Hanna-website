@@ -1,8 +1,17 @@
 ---
+name: Hanna
+surname: Zimmer
 title: About me
-name: Hanna Zimmer
+position: "MFA Student @ London Business School"
+address: "London Business School "
+email: "hzimmer.mfa2021@london.edu"
+github: hanna311
+linkedin: https://www.linkedin.com/in/hanna-zimmer-867a46157/?originalSubdomain=de
+date: "`r format(Sys.time(), '%B %Y')`"
 output: vitae::awesomecv
 ---
+
+# About me 
 
 ## Short Summary
 
