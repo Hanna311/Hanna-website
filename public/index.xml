@@ -6,16 +6,7 @@
     <description>Recent content on Forty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About me</title>
-      <link>/projects/project2/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project2/</guid>
-      <description>Short Summary  Currently reading for the Masters in Financial Analysis at London Business School Previously worked in M&amp;amp;A and Private Equity Recently started working with R   Education library(tibble) library(kableExtra) degree &amp;lt;-c(&amp;quot;MSc in Financial Analysis&amp;quot;,&amp;quot;BSc in International Business Administration&amp;quot;,&amp;quot;Global BBA (Semester Abroad)&amp;quot;, &amp;quot;International Baccalaureate&amp;quot;) years &amp;lt;- c(&amp;quot;2020-2022&amp;quot;,&amp;quot;2016-2019&amp;quot;,&amp;quot;2018&amp;quot;, &amp;quot;2013-2016&amp;quot;) institution &amp;lt;- c(&amp;quot;London Business School&amp;quot;, &amp;quot;WHU - Otto Beisheim School of Management&amp;quot;, &amp;quot;Essec Business School&amp;quot;, &amp;quot;King Edward&amp;#39;s School&amp;quot;) location &amp;lt;- c(&amp;quot;London, UK&amp;quot;, &amp;quot;Vallendar, GER&amp;quot;, &amp;quot;Paris, FR&amp;quot;, &amp;quot;Witley, UK&amp;quot;) education_frame &amp;lt;- data.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Covid 19 Analysis</title>
       <link>/projects/project1/</link>
@@ -81,6 +72,15 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <guid>/projects/hannacv/</guid>
       <description> Some stuff about me  I poisoned myself doing research. I was the first woman to win a Nobel prize I was the first person and only woman to win a Nobel prize in two different sciences.   Education  Nobel Prizes  Publications 
  </description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>/projects/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project2/</guid>
+      <description>Short Summary  Currently reading for the Masters in Financial Analysis at London Business School Previously worked in M&amp;amp;A and Private Equity Recently started working with R   Education library(tibble) library(kableExtra) degree &amp;lt;-c(&amp;quot;MSc in Financial Analysis&amp;quot;,&amp;quot;BSc in International Business Administration&amp;quot;,&amp;quot;Global BBA (Semester Abroad)&amp;quot;, &amp;quot;International Baccalaureate&amp;quot;) years &amp;lt;- c(&amp;quot;2020-2022&amp;quot;,&amp;quot;2016-2019&amp;quot;,&amp;quot;2018&amp;quot;, &amp;quot;2013-2016&amp;quot;) institution &amp;lt;- c(&amp;quot;London Business School&amp;quot;, &amp;quot;WHU - Otto Beisheim School of Management&amp;quot;, &amp;quot;Essec Business School&amp;quot;, &amp;quot;King Edward&amp;#39;s School&amp;quot;) location &amp;lt;- c(&amp;quot;London, UK&amp;quot;, &amp;quot;Vallendar, GER&amp;quot;, &amp;quot;Paris, FR&amp;quot;, &amp;quot;Witley, UK&amp;quot;) education_frame &amp;lt;- data.</description>
     </item>
     
   </channel>
