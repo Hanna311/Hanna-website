@@ -779,9 +779,15 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \c@LT@tables=\count328
 \c@LT@chunks=\count329
 \LT@p@ftn=\toks41
+) (/Users/Hanna/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip86
+\multirow@cntb=\count330
+\multirow@dima=\skip87
+\bigstrutjot=\dimen290
 )
 
-! LaTeX Error: File `multirow.sty' not found.
+! LaTeX Error: File `wrapfig.sty' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
@@ -790,13 +796,13 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.97 \usepackage
-                {wrapfig}^^M 
+l.98 \usepackage
+                {float}^^M 
 Here is how much of TeX's memory you used:
- 31401 strings out of 479445
- 620451 string characters out of 5880305
+ 31456 strings out of 479445
+ 621338 string characters out of 5880305
  991535 words of memory out of 5000000
- 50270 multiletter control sequences out of 15000+600000
+ 50321 multiletter control sequences out of 15000+600000
  535728 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  107i,0n,110p,546b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
