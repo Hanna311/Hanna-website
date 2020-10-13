@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load-libraries, echo=FALSE}
+```{r load-libraries, echo=FALSE, include=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
@@ -26,10 +26,12 @@ library(countrycode)
 library(readr)
 ```
 
-# First, lets load the data 
-```{r}
+# First, lets look at the data 
+```{r, include=FALSE}
 world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")
+```
 
+```{r}
 skim(world_happiness_report_2019)
 ```
 
@@ -48,8 +50,6 @@ whr_19 <- world_happiness_report_2019 %>%
 whr_19$continent <- countrycode(sourcevar = whr_19[["country"]],
                              origin = "country.name",
                              destination = "continent") 
-
-  
 
 #summarize data by continent
 by_continent <- whr_19 %>% 
