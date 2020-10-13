@@ -1,0 +1,184 @@
+---
+title: "Happiness Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load-libraries, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+library(tidyquant)
+library(purrr)
+library(countrycode)
+library(readr)
+```
+
+# First, lets load the data 
+```{r}
+world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")
+
+skim(world_happiness_report_2019)
+```
+
+# Second, lets look  happiness by country
+
+```{r}
+whr_19 <- world_happiness_report_2019 %>% 
+  rename(country = `Country or region`) %>%  
+  rename(GDP= `GDP per capita`) %>% 
+  rename(Social_support=`Social support`) %>% 
+  rename(Life_exp=`Healthy life expectancy`) %>% 
+  rename(Freedom=`Freedom to make life choices`) %>% 
+  rename(Corruption=`Perceptions of corruption`)
+
+#add continent column to world_happiness report data 
+whr_19$continent <- countrycode(sourcevar = whr_19[["country"]],
+                             origin = "country.name",
+                             destination = "continent") 
+
+  
+
+#summarize data by continent
+by_continent <- whr_19 %>% 
+  group_by(continent) %>% 
+  summarise(score_con=mean(Score)) %>% 
+  na.omit()
+
+#create a ggplot showing happiness in all countries with colors according to continent 
+ggplot(by_continent,aes(
+  x=reorder(continent,score_con),
+  y=score_con, 
+  fill=continent))+
+
+#bar chart format 
+  geom_col()+
+
+#add labels
+  labs(x="Continent", y="Average Happiness Score",title = "Oceania is the happiest continent", subtitle = "Average Happiness Score by country")+
+    
+#add theme
+    theme_economist()+
+    
+    theme(legend.position = "none")+
+    
+    NULL
+```
+# What makes people in Oceania so happy?
+
+## First let's look at the different countries within Oceania
+```{r}
+#filter data for Oceania
+oceania <- whr_19 %>% 
+  filter(continent=="Oceania")
+
+#create ggplot for Oceania
+ggplot(oceania, 
+       aes(x=country, 
+           y=Score, 
+           fill= country))+
+  
+  geom_col()+
+  
+# make sure y axis goes up to 8 
+  expand_limits(y=c(0,8))+
+
+# add labels
+  labs(title = "Australia and New Zealand are equally happy",
+       subtitle="Average Happiness Scores in Oceania", 
+       x="Country", 
+       y="Happiness Score")+
+  
+#add theme
+  theme_economist()+
+    
+  theme(legend.position = "none")+
+    
+  NULL
+  
+  
+  
+```
+## People in New Zealand and Australia appear to be equally happy, but what is different in these countries? 
+
+Let's plot the relationship between Happiness Score and a few key indicators
+
+```{r}
+
+#create subset for highlighted points
+highlight_oceania <- whr_19 %>% 
+  filter(continent=="Oceania")
+
+#create geom_point plot 
+ggplot(whr_19,
+       aes(x=GDP,y=Score, colour=continent))+
+  geom_point()+
+
+# add one geom-point for highlighted points
+ geom_point(data=highlight_oceania, 
+            aes(x=GDP,
+                y=Score, 
+                size=2.5))+
+
+# add labels
+  labs(title="The higher the GDP, the higher the happiness score",
+       subtitle = "Relationship between Happiness Score and GDP", 
+       y="Happiness Score")+
+  
+#add theme
+  theme_economist_white()+
+  theme(legend.position = "none")
+         
+```
+The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner. 
+
+## But money can't be everything. So let's look at a few more variables, but to not forget about GDP the size of the point will now represent their GDP
+
+```{r}
+
+#create geom_point plot 
+ggplot(whr_19,
+       aes(x=Social_support,y=Score, colour=continent,size=GDP, alpha=0.3))+
+  geom_point()+
+
+# add labels
+  labs(title="The higher social support, the higher the happiness score",
+       subtitle = "Relationship between happiness score and social support", x="Social Support",
+       y="Happiness Score")+
+  
+#add theme
+  theme_economist_white()+
+  theme(legend.position = "none")
+         
+```
+```{r}
+
+#create geom_point plot 
+ggplot(whr_19,
+       aes(x=Life_exp,y=Score, colour=continent,size=GDP, alpha=0.3))+
+  geom_point()+
+
+# add labels
+  labs(title="The higher the life expectancy, the higher the happiness score",
+       subtitle = "Relationship between happiness score and life expectancy", x="Life Expectancy",
+       y="Happiness Score")+
+  
+#add theme
+  theme_economist_white()+
+  theme(legend.position = "none")
+         
+```
+
+# Now let's go back to our orginal data set
