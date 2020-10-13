@@ -173,8 +173,9 @@ ggplot(whr_19,
   geom_point()+
 
 # add labels
-  labs(title="The higher the life expectancy, the higher the happiness score",
-       subtitle = "Relationship between happiness score and life expectancy", x="Life Expectancy",
+  labs(title="The higher life expectancy, the happier the people",
+       subtitle = "Relationship between happiness score and life expectancy", 
+       x="Life Expectancy",
        y="Happiness Score")+
   
 #add theme
