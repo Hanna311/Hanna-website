@@ -275,8 +275,8 @@
 </tbody>
 </table>
 </div>
-<div id="second-lets-look-happiness-by-country" class="section level1">
-<h1>Second, lets look happiness by country</h1>
+<div id="second-lets-look-at-happiness-by-country" class="section level1">
+<h1>Second, lets look at happiness by country</h1>
 <pre class="r"><code>whr_19 &lt;- world_happiness_report_2019 %&gt;% 
   rename(country = `Country or region`) %&gt;%  
   rename(GDP= `GDP per capita`) %&gt;% 
@@ -314,8 +314,10 @@ ggplot(by_continent,aes(
     theme(legend.position = &quot;none&quot;)+
     
     NULL</code></pre>
-<p><img src="/projects/project3_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-# What makes people in Oceania so happy?</p>
+<p><img src="/projects/project3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="what-makes-people-in-oceania-so-happy" class="section level1">
+<h1>What makes people in Oceania so happy?</h1>
 <div id="first-lets-look-at-the-different-countries-within-oceania" class="section level2">
 <h2>First let’s look at the different countries within Oceania</h2>
 <pre class="r"><code>#filter data for Oceania
@@ -345,8 +347,10 @@ ggplot(oceania,
   theme(legend.position = &quot;none&quot;)+
     
   NULL</code></pre>
-<p><img src="/projects/project3_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-## People in New Zealand and Australia appear to be equally happy, but what is different in these countries?</p>
+<p><img src="/projects/project3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="people-in-new-zealand-and-australia-appear-to-be-equally-happy-but-what-is-different-in-these-countries" class="section level2">
+<h2>People in New Zealand and Australia appear to be equally happy, but what is different in these countries?</h2>
 <p>Let’s plot the relationship between Happiness Score and a few key indicators</p>
 <pre class="r"><code>#create subset for highlighted points
 highlight_oceania &lt;- whr_19 %&gt;% 

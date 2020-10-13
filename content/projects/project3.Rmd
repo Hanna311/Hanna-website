@@ -35,7 +35,7 @@ world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")
 skim(world_happiness_report_2019)
 ```
 
-# Second, lets look  happiness by country
+# Second, lets look at happiness by country
 
 ```{r}
 whr_19 <- world_happiness_report_2019 %>% 
@@ -76,6 +76,7 @@ ggplot(by_continent,aes(
     
     NULL
 ```
+
 # What makes people in Oceania so happy?
 
 ## First let's look at the different countries within Oceania
@@ -111,6 +112,7 @@ ggplot(oceania,
   
   
 ```
+
 ## People in New Zealand and Australia appear to be equally happy, but what is different in these countries? 
 
 Let's plot the relationship between Happiness Score and a few key indicators
