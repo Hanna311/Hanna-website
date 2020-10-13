@@ -106,7 +106,7 @@ disqusShortname = ""
    [[params.tiles.showcase]]
     title = "Happiness Analysis"
      subtitle = "Why are some people in some countries happier than others"
-      image = "pic03.jpg"
+      image = "projects/smile"
       url = "projects/project3"
 
   #  [[params.tiles.showcase]]
