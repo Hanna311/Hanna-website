@@ -110,10 +110,10 @@ disqusShortname = ""
       url = "projects/project3"
 
   #  [[params.tiles.showcase]]
-   #   title = "Ipsum"
-    #  subtitle = "Nisl Sed Aliquam"
+   #   title = "Equal Pay Analysis"
+    #  subtitle = "Are women at Omega paid less than men?"
      # image = "pic04.jpg"
-      #url = "blogs/ipsum"
+      #url = "projects/project4"
 
     #[[params.tiles.showcase]]
      # title = "Consequat"
