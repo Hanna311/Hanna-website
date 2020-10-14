@@ -1,15 +1,15 @@
 
 ---
-categories:
-- ""
-- ""
-date: "2020-10-13"
-description: Hanna's CV
-draft: false
+title: "Equal Pay Analysis"
+date: '2020-10-13'
+description: Project 4
+draft: no
 image: pic07.jpeg
-keywords: ""
+keywords: ''
 slug: project4
-title: CV of Hanna Zimmer
+categories:
+- ''
+- ''
 ---
 
 
