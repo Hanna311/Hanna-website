@@ -4,7 +4,6 @@ title: "Equal Pay Analysis"
 date: '2020-10-13'
 description: Project 4
 draft: no
-image: pic07.jpeg
 keywords: ''
 slug: project4
 categories:
