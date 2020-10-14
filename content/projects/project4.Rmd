@@ -1,5 +1,5 @@
 ---
-title: "Session 6: Homework 3"
+title: "Equal Pay Analysis"
 author: "Your name goes here"
 date: "`r Sys.Date()`"
 output:

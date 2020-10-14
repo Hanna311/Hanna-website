@@ -58,6 +58,10 @@ disqusShortname = ""
     [[params.navigation.links]]
      name = "Happiness Analysis"
       url = "projects/project3"
+      
+     [[params.navigation.links]]
+     name = "Equal Pay Analysis"
+      url = "projects/project4"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
