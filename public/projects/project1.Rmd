@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
   size="small")   # slightly smaller font for code
 options(digits = 3)
 
-# default figure size
+# default figure sizes
 knitr::opts_chunk$set(
   fig.width=6.75, 
   fig.height=6.75,
@@ -44,8 +44,6 @@ library(vroom)
 ```
 
 # CDC COVID-19 Public Use Data
-
-
 
 ```{r, cache=TRUE}
 # file contains 11 variables and 3.66m rows and is well over 380Mb. 

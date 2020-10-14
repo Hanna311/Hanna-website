@@ -1,0 +1,551 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Your description">
+	<meta name="author" content="Hanna">
+	<meta name="generator" content="Hugo 0.76.3" />
+	<title>Equal Pay Analysis &middot; Forty</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Hanna Zimmer</strong> <span>My Website</span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/projects/project2">About me</a></li>
+            
+                <li><a href="/projects/project1">Covid 19 Analysis</a></li>
+            
+                <li><a href="/projects/project3">Happiness Analysis</a></li>
+            
+                <li><a href="/projects/project4">Equal Pay Analysis</a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Equal Pay Analysis</h1>
+                            </header>
+                            
+                            
+
+
+<div id="omega-group-plc--pay-discrimination" class="section level1">
+<h1>Omega Group plc- Pay Discrimination</h1>
+<p>At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted.</p>
+<div id="loading-the-data" class="section level2">
+<h2>Loading the data</h2>
+<pre class="r"><code>omega &lt;- read_csv(here::here(&quot;data&quot;, &quot;omega.csv&quot;))
+glimpse(omega) # examine the data frame</code></pre>
+<pre><code>## Rows: 50
+## Columns: 3
+## $ salary     &lt;dbl&gt; 81894, 69517, 68589, 74881, 65598, 76840, 78800, 70033, 63…
+## $ gender     &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;m…
+## $ experience &lt;dbl&gt; 16, 25, 15, 33, 16, 19, 32, 34, 1, 44, 7, 14, 33, 19, 24, …</code></pre>
+</div>
+<div id="relationship-salary---gender" class="section level2">
+<h2>Relationship Salary - Gender ?</h2>
+<p>Calculation of Summary Statistics on salary by gender (mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% condifence interval)</p>
+<pre class="r"><code>mosaic::favstats (salary ~ gender, data=omega)</code></pre>
+<pre><code>##   gender   min    Q1 median    Q3   max  mean   sd  n missing
+## 1 female 47033 60338  64618 70033 78800 64543 7567 26       0
+## 2   male 54768 68331  74675 78568 84576 73239 7463 24       0</code></pre>
+<pre class="r"><code>#assign name to dataframe
+
+salary_stats&lt;- omega %&gt;% 
+
+#group data by gender
+  
+group_by(gender) %&gt;% 
+
+#calculate statistics 
+
+summarise(mean_salary=mean(salary),
+          
+          Standard_Deviation=sd(salary),
+          
+          Sample_Size=n(),
+          
+          t_criticial=qt(0.05/2,Sample_Size-1),
+          
+          Standard_Error=(Standard_Deviation/sqrt(Sample_Size)),
+          
+          margin_of_error=Standard_Error*t_criticial,
+          
+          CI_high=mean_salary+margin_of_error,
+          
+          CI_low=mean_salary-margin_of_error)
+
+salary_stats</code></pre>
+<pre><code>## # A tibble: 2 x 9
+##   gender mean_salary Standard_Deviat… Sample_Size t_criticial Standard_Error
+##   &lt;chr&gt;        &lt;dbl&gt;            &lt;dbl&gt;       &lt;int&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+## 1 female      64543.            7567.          26       -2.06          1484.
+## 2 male        73239.            7463.          24       -2.07          1523.
+## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
+<p>Let’s visualise these values</p>
+<pre class="r"><code>ggplot(salary_stats,
+       
+       aes(x=reorder(gender, mean_salary), 
+           y=mean_salary, 
+           colour=gender)) +
+  
+  geom_point() +
+  
+  geom_errorbar(width=.2, aes(ymin=CI_low, ymax=CI_high)) + 
+  
+  labs(x=&quot;Gender&quot;,
+       y= &quot;Salary&quot;, 
+       title= &quot;Difference in salaries between genders: Looking at confidence intervals&quot;, 
+       subtitle = &quot;The CI&#39;s do not overlap&quot;)+ 
+  
+  theme_minimal()+
+  
+  coord_flip()+
+  
+  theme(legend.position = &quot;none&quot;)+
+  
+  NULL</code></pre>
+<p><img src="/projects/project4_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" />
+Conclusion</p>
+<p>On average the salary for men and women differs by almost 10k. However, this does not mean that the difference is necessarily significant. To evaluate whether the difference is significant we can look at the confidence intervals:</p>
+<p>The confidence Intervals do not overlap. Thus with 95% confidence we can conclude that there is a difference in population means between male and females salaries.</p>
+<p>Another way of determining whether the difference in salaries is significant is to test the null hypothesis=</p>
+<p>Mean difference in salaries is zero.</p>
+<p>We can test this using 1) t.test() and 2) the simulation method from the infer package</p>
+<ol style="list-style-type: decimal">
+<li>hypothesis testing using t.test()</li>
+</ol>
+<pre class="r"><code># first we have to check whether the populations have an equal or unequal variance using the Barlett test 
+
+salary_variance &lt;- bartlett.test(salary ~ gender, 
+        data = omega)
+
+salary_variance</code></pre>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  salary by gender
+## Bartlett&#39;s K-squared = 0.005, df = 1, p-value = 0.9</code></pre>
+<pre class="r"><code># Since the p-value is higher than 0.05, we can assume that they have equal variances.
+
+# use t.test for equal variances
+t_test &lt;- t.test(salary~gender,
+                 data = omega,
+                 var.equal = TRUE)
+
+t_test</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  salary by gender
+## t = -4, df = 48, p-value = 2e-04
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -12975  -4418
+## sample estimates:
+## mean in group female   mean in group male 
+##                64543                73239</code></pre>
+<pre class="r"><code>t_test_tidy &lt;- tidy(t_test) %&gt;% 
+  
+  # Calculate difference in means, since t.test() doesn&#39;t actually do that
+  
+  mutate(estimate = estimate1 - estimate2) %&gt;%
+  
+  # Rearrange columns
+  
+  select(starts_with(&quot;estimate&quot;), everything())
+
+t_test_tidy</code></pre>
+<pre><code>## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic p.value parameter conf.low conf.high
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1   -8696.    64543.    73239.     -4.09 1.65e-4        48  -12975.    -4418.
+## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Hypothesis testing using infer package</li>
+</ol>
+<pre class="r"><code>null_distribution &lt;- omega %&gt;% 
+
+# specify response variable and explanatory variable 
+  specify(salary~gender) %&gt;% 
+
+# hypothesize H0 (use independence because we have two samples)
+
+  hypothesize(null=&quot;independence&quot;) %&gt;% 
+
+# generate replicates
+
+  generate(reps=1000, type=&quot;permute&quot;) %&gt;% 
+
+# calculate summary statistics
+  
+  calculate(stat = &quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;))
+
+null_distribution</code></pre>
+<pre><code>## # A tibble: 1,000 x 2
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1 -3386.
+##  2         2 -1428.
+##  3         3 -1362.
+##  4         4  1200.
+##  5         5 -1436.
+##  6         6 -2948.
+##  7         7 -3056.
+##  8         8  1605.
+##  9         9  6605.
+## 10        10   176.
+## # … with 990 more rows</code></pre>
+<pre class="r"><code># visualize the p-value 
+
+obs_diff_means &lt;- omega %&gt;%
+  specify(salary~gender) %&gt;%
+  calculate(stat = &quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;))
+
+actual_difference &lt;- obs_diff_means  %&gt;% pull()
+
+obs_diff_means</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##    stat
+##   &lt;dbl&gt;
+## 1 8696.</code></pre>
+<pre class="r"><code>  visualize(null_distribution, bins =10)+
+  
+  shade_p_value(obs_stat =obs_diff_means, direction = &quot;both&quot;)</code></pre>
+<p><img src="/projects/project4_files/figure-html/unnamed-chunk-2-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>obs_diff_means %&gt;% 
+  get_p_value(obs_stat = 8696,direction = &quot;both&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   p_value
+##     &lt;dbl&gt;
+## 1       0</code></pre>
+<p>Conclusion:</p>
+<p>Both methods show us that with 95% confidence we can say that there is a statistically significant difference in salaries between men and women.</p>
+<ul>
+<li><p>the t.test method shows a p value &lt; 0.05 (the difference in means we observed is highly surprising in a world where h0 holds true) a t value whose absolute value is higher than 2, and the confidence interval does not include 0</p></li>
+<li><p>the infer method shows that the probability of an observed difference in means of about 8697 is very unlikely where H0=there is no difference in means between genders holds true with p value = 0</p></li>
+</ul>
+</div>
+<div id="relationship-experience---gender" class="section level2">
+<h2>Relationship Experience - Gender?</h2>
+<p>At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).</p>
+<pre class="r"><code># Summary Statistics of salary by gender
+favstats (experience ~ gender, data=omega)</code></pre>
+<pre><code>##   gender min    Q1 median   Q3 max  mean    sd  n missing
+## 1 female   0  0.25    3.0 14.0  29  7.38  8.51 26       0
+## 2   male   1 15.75   19.5 31.2  44 21.12 10.92 24       0</code></pre>
+<p>First let’s have a look at the data</p>
+<pre class="r"><code># assign name to dataframe
+
+experience_stats&lt;- omega %&gt;% 
+
+# group data by gender
+  
+group_by(gender) %&gt;% 
+
+# calculate statistics 
+
+summarise(mean_experience=mean(experience),
+          
+          Standard_Deviation=sd(experience),
+          
+          Sample_Size=n(),
+          
+          t_criticial=qt(0.05/2,Sample_Size-1),
+          
+          Standard_Error=(Standard_Deviation/sqrt(Sample_Size)),
+          
+          margin_of_error=Standard_Error*t_criticial,
+          
+          CI_high=mean_experience+margin_of_error,
+          
+          CI_low=mean_experience-margin_of_error)
+
+experience_stats</code></pre>
+<pre><code>## # A tibble: 2 x 9
+##   gender mean_experience Standard_Deviat… Sample_Size t_criticial Standard_Error
+##   &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;       &lt;int&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+## 1 female            7.38             8.51          26       -2.06           1.67
+## 2 male             21.1             10.9           24       -2.07           2.23
+## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
+<p>Let’s visualise this</p>
+<pre class="r"><code>ggplot(experience_stats, 
+       aes(x=reorder(gender, mean_experience), 
+           y=mean_experience, 
+           colour=gender))+
+  
+  geom_point() +
+  
+  geom_errorbar(width=.2, aes(ymin=CI_low, ymax=CI_high)) + 
+  
+  labs(x=&quot;Gender&quot;,
+       y= &quot;experience&quot;, 
+       title=&quot;Difference in experience between genders: Looking at confidence intervals&quot;, 
+       subtitle = &quot;The CI&#39;s do not overlap&quot;) + 
+  
+  theme_minimal()+
+  
+  coord_flip()+
+  
+  theme(legend.position = &quot;none&quot;)+
+  
+  NULL</code></pre>
+<p><img src="/projects/project4_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>Now let’s do the hypothesis testing, first using t.test()</p>
+<pre class="r"><code># first we have to check whether the populations have an equal or unequal variance usng the Barlett test 
+
+exp_variance &lt;- bartlett.test(experience ~ gender, 
+        data = omega)
+
+exp_variance</code></pre>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  experience by gender
+## Bartlett&#39;s K-squared = 1, df = 1, p-value = 0.2</code></pre>
+<pre class="r"><code># Since the p-value is higher than 0.05, we can assume that they have equal variances.
+
+# use t.test for equal variances
+
+t_test_exp &lt;- t.test(experience~gender,
+                 data = omega,
+                 var.equal = TRUE)
+
+t_test_exp</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  experience by gender
+## t = -5, df = 48, p-value = 9e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -19.3  -8.2
+## sample estimates:
+## mean in group female   mean in group male 
+##                 7.38                21.12</code></pre>
+<pre class="r"><code>t_test_exp_tidy &lt;- tidy(t_test_exp) %&gt;% 
+  
+  # Calculate difference in means, since t.test() doesn&#39;t actually do that
+  
+  mutate(estimate = estimate1 - estimate2) %&gt;%
+  
+  # Rearrange columns
+  
+  select(starts_with(&quot;estimate&quot;), everything())
+
+t_test_exp_tidy</code></pre>
+<pre><code>## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic p.value parameter conf.low conf.high
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1    -13.7      7.38      21.1     -4.98 8.51e-6        48    -19.3     -8.20
+## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+<p>Now with the infer package</p>
+<pre class="r"><code>null_distribution_exp &lt;- omega %&gt;% 
+
+# specify response variable and explanatory variable 
+  specify(experience~gender) %&gt;% 
+
+# hypothesize H0 (use independence because we have only one dataset)
+
+  hypothesize(null=&quot;independence&quot;) %&gt;% 
+
+# generate replicates
+
+  generate(reps=1000, type=&quot;permute&quot;) %&gt;% 
+
+# calculate summary statistics
+  
+  calculate(stat = &quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;))
+
+null_distribution</code></pre>
+<pre><code>## # A tibble: 1,000 x 2
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1 -3386.
+##  2         2 -1428.
+##  3         3 -1362.
+##  4         4  1200.
+##  5         5 -1436.
+##  6         6 -2948.
+##  7         7 -3056.
+##  8         8  1605.
+##  9         9  6605.
+## 10        10   176.
+## # … with 990 more rows</code></pre>
+<pre class="r"><code># Visualize p value 
+
+obs_diff_means_exp &lt;- omega %&gt;%
+  
+  specify(experience~gender) %&gt;%
+  
+  calculate(stat = &quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;))
+
+obs_diff_means_exp</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##    stat
+##   &lt;dbl&gt;
+## 1  13.7</code></pre>
+<pre class="r"><code>  visualize(null_distribution_exp, bins =10)+
+  
+  shade_p_value(obs_stat =obs_diff_means_exp, direction = &quot;both&quot;)</code></pre>
+<p><img src="/projects/project4_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>obs_diff_means %&gt;% 
+  get_p_value(obs_stat = obs_diff_means_exp, direction = &quot;both&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   p_value
+##     &lt;dbl&gt;
+## 1       0</code></pre>
+<p>Conclusion:</p>
+<p>Both methods show us that there is a statistically significant difference in experience between men and women</p>
+<ul>
+<li><p>summary statistics show that the confidence intervals do not overlap</p></li>
+<li><p>the t.test method shows a p value &lt; 0.05, a t value whose absolute value is higher than 2, and the confidence interval does not include 0</p></li>
+<li><p>the infer method shows that the probability of an observed difference in means of about 14 years is very unlikely (p value = 0) when H0=there is no difference in experience between genders holds true</p></li>
+</ul>
+<p>There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination.</p>
+</div>
+<div id="relationship-salary---experience" class="section level2">
+<h2>Relationship Salary - Experience ?</h2>
+<p>Let’s have a closer look at the relationship between experience in salary using a scatter plot</p>
+<pre class="r"><code># create plot from data omega where x axis shows experience, and y axis shows salary
+
+ggplot(omega, aes(x = experience, y=salary,color=gender))+
+  
+# use geom_point to create a scatterplot
+  
+  geom_point()+
+  
+# add a theme and labels
+  
+  theme_economist_white()+
+  
+  labs(
+    title = &quot;Strong positive relationship between experience and salary&quot;,
+    subtitle = &quot;Relationship between salary and years of experience&quot;,
+    x =&quot;Years of Experience&quot;,
+    y =&quot;Salary&quot;)+
+  
+  # remove legend 
+  
+  theme(legend.position = &quot;none&quot;)+
+  
+  NULL</code></pre>
+<p><img src="/projects/project4_files/figure-html/salary_exp_scatter-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="check-correlations-between-the-data" class="section level2">
+<h2>Check correlations between the data</h2>
+<p>You can use <code>GGally:ggpairs()</code> to create a scatterplot and correlation matrix. Essentially, we change the order our variables will appear in and have the dependent variable (Y), salary, as last in our list. We then pipe the dataframe to <code>ggpairs()</code> with <code>aes</code> arguments to colour by <code>gender</code> and make ths plots somewhat transparent (<code>alpha  = 0.3</code>).</p>
+<pre class="r"><code>omega %&gt;% 
+  select(gender, experience, salary) %&gt;% #order variables they will appear in ggpairs()
+  ggpairs(aes(colour=gender, alpha = 0.3))+
+  theme_bw()</code></pre>
+<p><img src="/projects/project4_files/figure-html/ggpairs-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>Conclusions from scatterplot</p>
+<p>Overall, there is a positive relationship between experience in salary. However, this experience appears to not be completely linear. Between 0 and 10 years salary increases strongly as experience increases, while this relationship flattens off beyond 10 years.</p>
+</div>
+</div>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+                <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                    <li><a href="" class="icon alt " target="_blank"><span class="label"></span></a></li>
+                
+                    <li><a href="https://github.com/Hanna311" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                    <li><a href="https://www.linkedin.com/in/hanna-zimmer-867a46157/?originalSubdomain=de" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Hanna Zimmer</li>
+                
+                <li>Design:  <a href="https://www.html5up.net">HTML5 UP</a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>
