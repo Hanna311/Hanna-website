@@ -117,7 +117,7 @@ disqusShortname = ""
    title = "Equal Pay Analysis"
     subtitle = "Are women at Omega paid less than men?"
      image = "projects/equalpay.jpg"
-      url = "content/projects/project4"
+      url = "projects/project4"
 
     #[[params.tiles.showcase]]
      # title = "Consequat"
