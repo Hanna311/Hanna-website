@@ -1,4 +1,3 @@
-
 ---
 title: "Equal Pay Analysis"
 author: "Your name goes here"
