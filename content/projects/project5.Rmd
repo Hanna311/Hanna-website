@@ -1,5 +1,5 @@
 ---
-title: "Covid 19 Analysis"
+title: "About me"
 author: "Your name goes here"
 date: "`r Sys.Date()`"
 output:

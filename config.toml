@@ -49,7 +49,7 @@ disqusShortname = ""
 
     [[params.navigation.links]]
      name = "About me"
-      url = "projects/project2a"
+      url = "projects/project5"
 
     [[params.navigation.links]]
       name = "Covid 19 Analysis"
@@ -99,7 +99,7 @@ disqusShortname = ""
       title = "About me"
       subtitle = "See my CV here"
       image = "pic01.jpg"
-      url = "projects/project2a"
+      url = "projects/project5"
 
     [[params.tiles.showcase]]
       title = "Covid 19 Analysis"
