@@ -46,7 +46,7 @@ library(openintro)
 library(tidyquant)
 ```
 
-# Omega Group plc- Pay Discrimination
+# Omega Group plc - Pay Discrimination
 
 
 At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted. 
@@ -411,6 +411,104 @@ omega %>%
   theme_bw()
 ```
 
-Conclusions from scatterplot
+# UK Gender Pay Gap 2017
 
-Overall, there is a positive relationship between experience in salary. However, this experience appears to not be completely linear. Between 0 and 10 years salary increases strongly as experience increases, while this relationship flattens off beyond 10 years.  
+The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.
+
+Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let's download the data for 2017.
+
+##load data and look at it
+```{r}
+#load data into r
+gender_pay_gap<- read_csv("~/desktop/Hanna-website/data/paygap.csv")
+
+#use glimpse to get on verview over the data
+glimpse(gender_pay_gap)
+skim(gender_pay_gap)
+
+```
+## Let's look at the average pay gap between man and women in the UK 
+
+```{r}
+#calculate average percentage difference in hourly wages in UK
+UK_pay_gap_hourly <- gender_pay_gap %>% 
+ summarise(mean_diff_hourly=mean(DiffMeanHourlyPercent))
+
+UK_pay_gap_bonus <- gender_pay_gap %>% 
+  na.omit() %>% 
+ summarise(mean_diff_bonus=mean(DiffMeanBonusPercent))
+
+UK_pay_gap_hourly
+
+UK_pay_gap_bonus
+```
+On average women are paid 15% less than men per hour and receive a 20% smaller bonus. 
+
+## Which company sizes have the largest pay gap? 
+
+
+```{r}
+#order the factor
+gender_pay_gap$EmployerSize <- factor(x = gender_pay_gap$EmployerSize, levels = c("Less than 250","250 to 499", "500 to 999", "1000 to 4999", "5000 to 19,999", "20,000 or more", "Not Provided"))
+
+#Group data by employer size
+by_size <- gender_pay_gap %>% 
+  group_by(EmployerSize) %>% 
+  
+#omit NAs
+  na.omit() %>%
+  
+#summarise key data
+summarise(mean_hourly_size=mean(DiffMeanHourlyPercent),
+          mean_bonus_size=mean(DiffMeanBonusPercent))
+
+#Visualise data
+ggplot(by_size, aes(x=EmployerSize,y=mean_hourly_size))+
+  geom_col()+
+  
+#add labels
+  labs(title="Small companies have the smallest pay gaps", subtitle = "Pay Gap in hourly wage by company size", x="Employer Size", y="% difference in hourly wage")
+```
+## Let's have a look at whether the national percentage difference in hourly wages is statistically significant
+
+### Calculate statistics 
+```{r}
+hourly_diff_stats <- gender_pay_gap %>% 
+summarise(mean_hourly_difference=mean(DiffMeanHourlyPercent),
+          
+          Standard_Deviation=sd(DiffMeanHourlyPercent),
+          
+          Sample_Size=n(),
+          
+          t_criticial=qt(0.05/2,Sample_Size-1),
+          
+          Standard_Error=(Standard_Deviation/sqrt(Sample_Size)),
+          
+          margin_of_error=Standard_Error*t_criticial,
+          
+          CI_high=mean_hourly_difference+margin_of_error,
+          
+          CI_low=mean_hourly_difference-margin_of_error)
+
+hourly_diff_stats
+```
+
+### Now let's do the hypothesis testing, first using t.test()
+
+H0: the percentage difference in hourly wages is 0
+```{r}
+
+t.test(gender_pay_gap$DiffMeanHourlyPercent, 
+       mu=0, 
+       alternative="greater", 
+       conf.level=0.95)
+```
+
+Results: 
+
+* Summary Statistics: The confidence Interval does not include 0 -> the percentage difference in hourly wages between man and women is significant at a 95% level
+
+* T.Test: t value is larger than 2, p value is < 0.05, we can reject the H0 i.e. the percentage difference in hourly wages is 0 
+
+
+
