@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
  
 ## Education
 
-```{r, include=FALSE}
+```{r, echo=FALSE}
 library(tibble)
 library(kableExtra)
 
@@ -30,12 +30,11 @@ location <- c("London, UK", "Vallendar, GER", "Paris, FR", "Witley, UK")
 education_frame <- data.frame(Date=years, Location=location, Institution=institution, Degree=degree)
 
 kable(education_frame)
-
 ```
 
 ## Work Experience
 
-```{r, include=FALSE}
+```{r, echo=FALSE}
 Dates <-c("2020","2019/2020", "2019","2018","2016")
 
 Company <- c("Rothschild & Co","Silver Investment Partners","Enpal", "Evonik Nippon Aerosil", "Pharmalex")
@@ -47,7 +46,6 @@ Place <- c("Frankfurt, GER", "Königstein, GER", "Berlin, GER", "Tokyo, JP", "Fr
 jobs_frame <- data.frame(Date=Dates, Location=Place, Company=Company, Position=Position)
 
 kable(jobs_frame)
-
 ```
 
 ## Extra-curricular activities 
