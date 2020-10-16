@@ -1,5 +1,5 @@
 ---
-title: "Equal Pay Analysis"
+title: "Equal Pay Analysis 👩💼👨"
 author: "Your name goes here"
 date: "`r Sys.Date()`"
 output:
