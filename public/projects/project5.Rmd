@@ -1,5 +1,5 @@
 ---
-title: "project 4"
+title: "About me"
 output: html_document
 ---
 
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
  
 ## Education
 
-```{r}
+```{r, include=FALSE}
 library(tibble)
 library(kableExtra)
 
@@ -35,7 +35,7 @@ kable(education_frame)
 
 ## Work Experience
 
-```{r}
+```{r, include=FALSE}
 Dates <-c("2020","2019/2020", "2019","2018","2016")
 
 Company <- c("Rothschild & Co","Silver Investment Partners","Enpal", "Evonik Nippon Aerosil", "Pharmalex")
