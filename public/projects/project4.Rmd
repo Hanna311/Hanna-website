@@ -504,7 +504,7 @@ t.test(gender_pay_gap$DiffMeanHourlyPercent,
        conf.level=0.95)
 ```
 
-Result: 
+Results: 
 
 * Summary Statistics: The confidence Interval does not include 0 -> the percentage difference in hourly wages between man and women is significant at a 95% level
 

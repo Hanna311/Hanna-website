@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<meta name="description" content="Your description">
 	<meta name="author" content="Hanna">
-	<meta name="generator" content="Hugo 0.76.3" />
+	<meta name="generator" content="Hugo 0.76.5" />
 	<title>Equal Pay Analysis &middot; Forty</title>
 	<!-- Stylesheets -->
 	
@@ -235,18 +235,18 @@ t_test_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate   stat
-##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1   399.
-##  2         2  -386.
-##  3         3 -1750.
-##  4         4  3738.
-##  5         5   233.
-##  6         6 -1973.
-##  7         7 -3849.
-##  8         8  2688.
-##  9         9 -3734.
-## 10        10  1093.
+##    replicate    stat
+##        &lt;int&gt;   &lt;dbl&gt;
+##  1         1 -4593. 
+##  2         2 -4436. 
+##  3         3 -3891. 
+##  4         4   167. 
+##  5         5  -701. 
+##  6         6  1415. 
+##  7         7 -2775. 
+##  8         8    10.2
+##  9         9  1729. 
+## 10        10 -1353. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -411,18 +411,18 @@ t_test_exp_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate   stat
-##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1   399.
-##  2         2  -386.
-##  3         3 -1750.
-##  4         4  3738.
-##  5         5   233.
-##  6         6 -1973.
-##  7         7 -3849.
-##  8         8  2688.
-##  9         9 -3734.
-## 10        10  1093.
+##    replicate    stat
+##        &lt;int&gt;   &lt;dbl&gt;
+##  1         1 -4593. 
+##  2         2 -4436. 
+##  3         3 -3891. 
+##  4         4   167. 
+##  5         5  -701. 
+##  6         6  1415. 
+##  7         7 -2775. 
+##  8         8    10.2
+##  9         9  1729. 
+## 10        10 -1353. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -1007,7 +1007,7 @@ hourly_diff_stats</code></pre>
 ## sample estimates:
 ## mean of x 
 ##      14.3</code></pre>
-<p>Result:</p>
+<p>Results:</p>
 <ul>
 <li><p>Summary Statistics: The confidence Interval does not include 0 -&gt; the percentage difference in hourly wages between man and women is significant at a 95% level</p></li>
 <li><p>T.Test: t value is larger than 2, p value is &lt; 0.05, we can reject the H0 i.e. the percentage difference in hourly wages is 0</p></li>
