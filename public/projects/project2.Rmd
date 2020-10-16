@@ -15,9 +15,12 @@ output:
 
 ## Short Summary
 
- * Currently reading for the Masters in Financial Analysis at London Business School 
- * Previously worked in M&A and Private Equity 
- * Recently started working with R
+🎓 Currently reading for the Masters in Financial Analysis at London Business School 
+💼 Previously worked in M&A and Private Equity 
+💻 Recently started exploring the world of R
+🎷 Music lover who can't wait to go to concerts again
+🎿 Passionate once a year skier 
+ 
 
 ## Education
 

@@ -235,18 +235,18 @@ t_test_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate    stat
-##        &lt;int&gt;   &lt;dbl&gt;
-##  1         1 -4593. 
-##  2         2 -4436. 
-##  3         3 -3891. 
-##  4         4   167. 
-##  5         5  -701. 
-##  6         6  1415. 
-##  7         7 -2775. 
-##  8         8    10.2
-##  9         9  1729. 
-## 10        10 -1353. 
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1 -3899.
+##  2         2  -304.
+##  3         3  2076.
+##  4         4 -6800.
+##  5         5 -3833.
+##  6         6   572.
+##  7         7 -5833.
+##  8         8  -287.
+##  9         9  -304.
+## 10        10   374.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -411,18 +411,18 @@ t_test_exp_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate    stat
-##        &lt;int&gt;   &lt;dbl&gt;
-##  1         1 -4593. 
-##  2         2 -4436. 
-##  3         3 -3891. 
-##  4         4   167. 
-##  5         5  -701. 
-##  6         6  1415. 
-##  7         7 -2775. 
-##  8         8    10.2
-##  9         9  1729. 
-## 10        10 -1353. 
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1 -3899.
+##  2         2  -304.
+##  3         3  2076.
+##  4         4 -6800.
+##  5         5 -3833.
+##  6         6   572.
+##  7         7 -5833.
+##  8         8  -287.
+##  9         9  -304.
+## 10        10   374.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -483,15 +483,6 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
   
   NULL</code></pre>
 <p><img src="/projects/project4_files/figure-html/salary_exp_scatter-1.png" width="648" style="display: block; margin: auto;" /></p>
-</div>
-<div id="check-correlations-between-the-data" class="section level2">
-<h2>Check correlations between the data</h2>
-<p>You can use <code>GGally:ggpairs()</code> to create a scatterplot and correlation matrix. Essentially, we change the order our variables will appear in and have the dependent variable (Y), salary, as last in our list. We then pipe the dataframe to <code>ggpairs()</code> with <code>aes</code> arguments to colour by <code>gender</code> and make ths plots somewhat transparent (<code>alpha  = 0.3</code>).</p>
-<pre class="r"><code>omega %&gt;% 
-  select(gender, experience, salary) %&gt;% #order variables they will appear in ggpairs()
-  ggpairs(aes(colour=gender, alpha = 0.3))+
-  theme_bw()</code></pre>
-<p><img src="/projects/project4_files/figure-html/ggpairs-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="uk-gender-pay-gap-2017" class="section level1">
@@ -939,8 +930,8 @@ UK_pay_gap_hourly</code></pre>
 ## 1            20.1</code></pre>
 <p>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</p>
 </div>
-<div id="which-company-sizes-have-the-largest-pay-gap" class="section level2">
-<h2>Which company sizes have the largest pay gap?</h2>
+<div id="does-the-pay-gap-differ-by-company-size" class="section level2">
+<h2>Does the pay gap differ by company size?</h2>
 <pre class="r"><code>#order the factor
 gender_pay_gap$EmployerSize &lt;- factor(x = gender_pay_gap$EmployerSize, levels = c(&quot;Less than 250&quot;,&quot;250 to 499&quot;, &quot;500 to 999&quot;, &quot;1000 to 4999&quot;, &quot;5000 to 19,999&quot;, &quot;20,000 or more&quot;, &quot;Not Provided&quot;))
 

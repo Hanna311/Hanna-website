@@ -96,7 +96,7 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "About me🤗"
+      title = "About me ✏️"
       subtitle = "See my CV here"
       image = "projects/avatar.jpg"
       url = "projects/project5"
