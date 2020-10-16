@@ -85,9 +85,9 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Hanna"
-    subtitle = "Welcome to my website where you can find out more about me and see my projects in r "
-    buttonText = "About me"
+    title = "Hi, my name is Hanna 👋 "
+    subtitle = "Welcome to my website where you can find out more about me 👩 and see my projects in r 💻 "
+    buttonText = "About me ✏️"
 
 
   # Tiles Section
@@ -96,25 +96,25 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "About me"
+      title = "About me🤗"
       subtitle = "See my CV here"
       image = "projects/avatar.jpg"
       url = "projects/project5"
 
     [[params.tiles.showcase]]
-      title = "Covid 19 Analysis"
+      title = "Covid 19 Analysis 🦠"
       subtitle = "An analysis of covid death rates by gender, age group and other factors"
       image = "projects/covid.jpg"
       url = "projects/project1"
 
    [[params.tiles.showcase]]
-    title = "Happiness Analysis"
+    title = "Happiness Analysis 🌈"
      subtitle = "Why are some people in some countries happier than others"
       image = "projects/smile.jpg"
       url = "projects/project3"
 
   [[params.tiles.showcase]]
-   title = "Equal Pay Analysis"
+   title = "Equal Pay Analysis 👩💼👨"
     subtitle = "Are women at Omega paid less than men?"
      image = "projects/equalpay.jpg"
       url = "projects/project4"
