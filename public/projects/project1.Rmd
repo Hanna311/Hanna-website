@@ -183,7 +183,7 @@ ggplot(covid_europe, aes(x=date, y=total_cases, fill=location))+
   facet_wrap(~location)+
   
 #add labels
-  labs(title = "France and the United Kingdom have most covid cases
+  labs(title = "France & the United Kingdom have most covid cases
        ", 
         x="
        Time", 
