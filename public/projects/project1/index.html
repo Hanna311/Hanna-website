@@ -83,19 +83,16 @@
 
 <div id="cdc-covid-19-public-use-data" class="section level1">
 <h1>CDC COVID-19 Public Use Data</h1>
-<pre class="r"><code># file contains 11 variables and 3.66m rows and is well over 380Mb. 
-# It will take time to download
-
-# URL link to CDC to download data
-url &lt;- &quot;https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD&quot;
-
-covid_data &lt;- vroom::vroom(url)%&gt;% # If vroom::vroom(url) doesn&#39;t work, use read_csv(url)
-  clean_names()</code></pre>
 <p>Given the data we have, I will produce two graphs that show death % rate:</p>
 <ol style="list-style-type: decimal">
 <li>by age group, sex, and whether the patient had co-morbidities or not</li>
 <li>by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.</li>
 </ol>
+<pre class="r"><code>#load the data
+url &lt;- &quot;https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD&quot;
+
+covid_data &lt;- vroom::vroom(url)%&gt;% # If vroom::vroom(url) doesn&#39;t work, use read_csv(url)
+  clean_names()</code></pre>
 <pre class="r"><code>skim (covid_data)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 1: </span>Data summary</caption>
@@ -987,36 +984,7 @@ skim(covid_more)</code></pre>
 <pre class="r"><code>covid_europe &lt;- covid_more %&gt;%
   
 #filter data for countries
-  filter(location %in% c(&quot;United Kingdom&quot;, &quot;Germany&quot;,&quot;France&quot;,&quot;Sweden&quot;, &quot;Switzerland&quot;))
-
-covid_europe</code></pre>
-<pre><code>## # A tibble: 1,459 x 41
-##    iso_code continent location date       total_cases new_cases new_cases_smoot…
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;    &lt;date&gt;           &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
-##  1 FRA      Europe    France   2019-12-31          NA         0               NA
-##  2 FRA      Europe    France   2020-01-01          NA         0               NA
-##  3 FRA      Europe    France   2020-01-02          NA         0               NA
-##  4 FRA      Europe    France   2020-01-03          NA         0               NA
-##  5 FRA      Europe    France   2020-01-04          NA         0               NA
-##  6 FRA      Europe    France   2020-01-05          NA         0               NA
-##  7 FRA      Europe    France   2020-01-06          NA         0                0
-##  8 FRA      Europe    France   2020-01-07          NA         0                0
-##  9 FRA      Europe    France   2020-01-08          NA         0                0
-## 10 FRA      Europe    France   2020-01-09          NA         0                0
-## # … with 1,449 more rows, and 34 more variables: total_deaths &lt;dbl&gt;,
-## #   new_deaths &lt;dbl&gt;, new_deaths_smoothed &lt;dbl&gt;, total_cases_per_million &lt;dbl&gt;,
-## #   new_cases_per_million &lt;dbl&gt;, new_cases_smoothed_per_million &lt;dbl&gt;,
-## #   total_deaths_per_million &lt;dbl&gt;, new_deaths_per_million &lt;dbl&gt;,
-## #   new_deaths_smoothed_per_million &lt;dbl&gt;, new_tests &lt;lgl&gt;, total_tests &lt;lgl&gt;,
-## #   total_tests_per_thousand &lt;lgl&gt;, new_tests_per_thousand &lt;lgl&gt;,
-## #   new_tests_smoothed &lt;lgl&gt;, new_tests_smoothed_per_thousand &lt;lgl&gt;,
-## #   tests_per_case &lt;lgl&gt;, positive_rate &lt;lgl&gt;, tests_units &lt;lgl&gt;,
-## #   stringency_index &lt;dbl&gt;, population &lt;dbl&gt;, population_density &lt;dbl&gt;,
-## #   median_age &lt;dbl&gt;, aged_65_older &lt;dbl&gt;, aged_70_older &lt;dbl&gt;,
-## #   gdp_per_capita &lt;dbl&gt;, extreme_poverty &lt;dbl&gt;, cardiovasc_death_rate &lt;dbl&gt;,
-## #   diabetes_prevalence &lt;dbl&gt;, female_smokers &lt;dbl&gt;, male_smokers &lt;dbl&gt;,
-## #   handwashing_facilities &lt;dbl&gt;, hospital_beds_per_thousand &lt;dbl&gt;,
-## #   life_expectancy &lt;dbl&gt;, human_development_index &lt;dbl&gt;</code></pre>
+  filter(location %in% c(&quot;United Kingdom&quot;, &quot;Germany&quot;,&quot;France&quot;,&quot;Sweden&quot;, &quot;Switzerland&quot;))</code></pre>
 <pre class="r"><code>ggplot(covid_europe, aes(x=date, y=total_cases, fill=location))+
   
 #choose graph type

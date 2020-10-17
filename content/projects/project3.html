@@ -302,7 +302,7 @@ ggplot(whr_19,
        y=&quot;Happiness Score&quot;)+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner.</p>
@@ -323,7 +323,7 @@ ggplot(whr_19,
        &quot;)+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>#create geom_point plot 
@@ -341,86 +341,8 @@ ggplot(whr_19,
        &quot;)+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
-</div>
-<div id="now-lets-go-back-to-our-orginal-data-set" class="section level1">
-<h1>Now let’s go back to our orginal data set</h1>
-<div id="who-do-you-think-is-happier-europeans-or-americans-hard-to-tell-isnt-it-lets-do-some-calculations" class="section level2">
-<h2>Who do you think is happier Europeans or Americans? Hard to tell isn’t it? Let’s do some calculations</h2>
-<pre class="r"><code>#assign name to dataframe
-
-happiness_stats&lt;- whr_19 %&gt;% 
-  
-#remove NAs
-  
-na.omit(happiness_stats) %&gt;% 
-
-#group data by gender
-  
-group_by(continent) %&gt;% 
-
-#calculate statistics 
-
-summarise(mean_score=mean(Score),
-          
-        Standard_Deviation=sd(Score),
-          
-        Sample_Size=n(),
-          
-        t_criticial=qt(0.05/2,Sample_Size-1),
-          
-        Standard_Error=(Standard_Deviation/sqrt(Sample_Size)),
-          
-        margin_of_error=Standard_Error*t_criticial,
-          
-        CI_high=mean_score+margin_of_error,
-          
-        CI_low=mean_score-margin_of_error)</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre class="r"><code>happiness_stats</code></pre>
-<pre><code>## # A tibble: 5 x 9
-##   continent mean_score Standard_Deviat… Sample_Size t_criticial Standard_Error
-##   &lt;chr&gt;          &lt;dbl&gt;            &lt;dbl&gt;       &lt;int&gt;       &lt;dbl&gt;          &lt;dbl&gt;
-## 1 Africa          4.37           0.644           45       -2.02         0.0960
-## 2 Americas        6.05           0.766           23       -2.07         0.160 
-## 3 Asia            5.27           0.872           46       -2.01         0.129 
-## 4 Europe          6.28           0.898           39       -2.02         0.144 
-## 5 Oceania         7.27           0.0559           2      -12.7          0.0395
-## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<div id="lets-visualise-the-values" class="section level1">
-<h1>Let’s visualise the values</h1>
-<pre class="r"><code>ggplot(happiness_stats,
-       
-       aes(x=reorder(continent, mean_score), 
-           y=mean_score, 
-           colour=continent)) +
-
-  geom_point() +
-  
-  geom_errorbar(width=.2, aes(ymin=CI_low, ymax=CI_high)) + 
-  
-  labs(x=&quot;Continent
-       &quot;,
-       y= &quot;
-       Happiness Score&quot;,
-       title= &quot;Difference in Happiness between Americas and Europe:
-Looking at confidence intervals
-&quot;, 
-       subtitle = &quot;The CI&#39;s of Europe and the Americas overlap&quot;)+ 
-  
-  theme_economist()+
-  
-  coord_flip()+
-  
-  theme(legend.position = &quot;bottom&quot;)+
-  
-  theme(legend.title=element_blank())+
-  
-  NULL</code></pre>
-<p><img src="/projects/project3_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>

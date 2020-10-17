@@ -47,11 +47,14 @@ library(viridis)
 
 # CDC COVID-19 Public Use Data
 
-```{r, cache=TRUE}
-# file contains 11 variables and 3.66m rows and is well over 380Mb. 
-# It will take time to download
 
-# URL link to CDC to download data
+Given the data we have, I will produce two graphs that show death % rate:
+
+1. by age group, sex, and whether the patient had co-morbidities or not
+1. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
+
+```{r, cache=TRUE}
+#load the data
 url <- "https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD"
 
 covid_data <- vroom::vroom(url)%>% # If vroom::vroom(url) doesn't work, use read_csv(url)
@@ -59,11 +62,6 @@ covid_data <- vroom::vroom(url)%>% # If vroom::vroom(url) doesn't work, use read
 
 
 ```
-
-Given the data we have, I will produce two graphs that show death % rate:
-
-1. by age group, sex, and whether the patient had co-morbidities or not
-1. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
 
 
 ```{r}
@@ -171,7 +169,6 @@ covid_europe <- covid_more %>%
 #filter data for countries
   filter(location %in% c("United Kingdom", "Germany","France","Sweden", "Switzerland"))
 
-covid_europe
 ```
 ```{r}
 ggplot(covid_europe, aes(x=date, y=total_cases, fill=location))+

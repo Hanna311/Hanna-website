@@ -143,7 +143,7 @@ ggplot(whr_19,
        y="Happiness Score")+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = "none")
          
 ```
@@ -169,7 +169,7 @@ ggplot(whr_19,
        ")+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = "none")
          
 ```
@@ -190,81 +190,7 @@ ggplot(whr_19,
        ")+
   
 #add theme
-  theme_economist_white()+
+  theme_economist()+
   theme(legend.position = "none")
          
 ```
-
-# Now let's go back to our orginal data set
-
-## Who do you think is happier Europeans or Americans? Hard to tell isn't it? Let's do some calculations
-
-```{r}
-#assign name to dataframe
-
-happiness_stats<- whr_19 %>% 
-  
-#remove NAs
-  
-na.omit(happiness_stats) %>% 
-
-#group data by gender
-  
-group_by(continent) %>% 
-
-#calculate statistics 
-
-summarise(mean_score=mean(Score),
-          
-        Standard_Deviation=sd(Score),
-          
-        Sample_Size=n(),
-          
-        t_criticial=qt(0.05/2,Sample_Size-1),
-          
-        Standard_Error=(Standard_Deviation/sqrt(Sample_Size)),
-          
-        margin_of_error=Standard_Error*t_criticial,
-          
-        CI_high=mean_score+margin_of_error,
-          
-        CI_low=mean_score-margin_of_error)
-
-happiness_stats
-
-```
-
-
-# Let's visualise the values
-
-```{r}
-ggplot(happiness_stats,
-       
-       aes(x=reorder(continent, mean_score), 
-           y=mean_score, 
-           colour=continent)) +
-
-  geom_point() +
-  
-  geom_errorbar(width=.2, aes(ymin=CI_low, ymax=CI_high)) + 
-  
-  labs(x="Continent
-       ",
-       y= "
-       Happiness Score",
-       title= "Difference in Happiness between Americas and Europe:
-Looking at confidence intervals
-", 
-       subtitle = "The CI's of Europe and the Americas overlap")+ 
-  
-  theme_economist()+
-  
-  coord_flip()+
-  
-  theme(legend.position = "bottom")+
-  
-  theme(legend.title=element_blank())+
-  
-  NULL
-```
-
