@@ -292,6 +292,7 @@ ggplot(covid_measures_map, aes(map_id = region, fill = Stringency))+
   
 #add labels
   labs(title= "Most countries currently have intermediate measures in place",subtitle = "Current stringency level of covid measures in the world", x="",y="")+
+  coord_fixed(ratio = 1.7)+
   NULL
 ```
 
