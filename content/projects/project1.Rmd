@@ -45,8 +45,9 @@ library(maps)
 library(viridis)
 ```
 
-# CDC COVID-19 Public Use Data
+![Covid 19](https://img.jakpost.net/c/2020/05/20/2020_05_20_95707_1589954243._large.jpg)
 
+# CDC COVID-19 Public Use Data
 
 Given the data we have, I will produce two graphs that show death % rate:
 
