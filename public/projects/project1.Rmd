@@ -1,5 +1,5 @@
 ---
-title: "Covid 19 Analysis"
+title: "Covid 19 Analysis 🦠"
 author: "Your name goes here"
 date: "`r Sys.Date()`"
 output:
@@ -41,6 +41,8 @@ library(janitor)
 library(httr)
 library(readxl)
 library(vroom)
+library(maps)
+library(viridis)
 ```
 
 # CDC COVID-19 Public Use Data
@@ -148,5 +150,149 @@ ggplot(covid_icu, aes(x=death_rate,y=age_group))+
      color="black", fill="grey", linetype="solid"), panel.background = element_rect(fill = "white"),panel.grid=element_line(size=0.5, colour="#F1F1EB"), panel.border = element_rect(fill=NA))
 ```
 
+
+# Covid cases in other countries 
+
+Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.
+
+```{r}
+#download the data
+covid_more<- read_csv("~/desktop/Hanna-website/data/coviddata.csv")
+
+#have a look at the data
+skim(covid_more)
+```
+
+First let's compare the number of total cases in a few European countries
+```{r}
+
+covid_europe <- covid_more %>%
+  
+#filter data for countries
+  filter(location %in% c("United Kingdom", "Germany","France","Sweden", "Switzerland"))
+
+covid_europe
+```
+```{r}
+ggplot(covid_europe, aes(x=date, y=total_cases, fill=location))+
+  
+#choose graph type
+  geom_col()+
+  
+#facet by country
+  facet_wrap(~location)+
+  
+#add labels
+  labs(title = "France and the United Kingdom have most covid cases
+       ", 
+        x="
+       Time", 
+       y="Total Cases
+       ")+
+  
+#choose theme and remove legend
+  theme_economist()+
+  theme(legend.position = "none")+
+  NULL
+```
+Now that we know that the UK and France have the highest total number of covid cases. Let's have a look at the measures these countries have put in place in response. 
+```{r}
+ggplot(covid_europe, aes(x=date, y=stringency_index, color=location))+
+  
+#choose graph type
+   geom_line()+
+
+# add labels
+  labs(title = "France had the strictest covid measures
+       ", x="
+       Time", 
+       y="Stringency Index
+       ")+
+
+# choose theme & legend position & title
+  theme_economist()+
+  theme(legend.position = "right")+
+  theme(legend.title = element_blank())+
+  NULL
+```
+As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index. 
+
+Now let's have a look at whether strict measures have an effect on daily new cases.
+```{r}
+ggplot(covid_europe, aes(x=date, y=new_cases, color=stringency_index))+
+  
+#choose graph type
+  geom_point()+
+
+# choose color scale
+  scale_color_gradient(low="blue", high="red")+
+  
+# add labels
+  labs(title = "Strict measures lead to lower case numbers
+       ", x="
+       Time", 
+       y="New Cases
+       ")+
+  
+#change legend title
+  guides(color=guide_legend("Stringency Index"))+
+  
+#facet wrap by country
+  facet_wrap(~location)+
+  
+#choose theme
+  theme_economist()+
+  
+  NULL
+```
+Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map. 
+
+```{r}
+#Transform data
+covid_measures <- covid_more %>%
+
+#select only relevant variables
+  select(iso_code,location,date,stringency_index) %>%
+
+#rename some columns for join with 
+  rename(
+    region = location,
+   Stringency = stringency_index
+    ) %>% 
+#rename United States to USA for left join
+  mutate(
+    region = ifelse(region == "United States", "USA", region)
+    ) %>% 
+
+#filter for a recent date (i choose this because there were only few stringency index values available for more recent data)
+  filter(date=="2020-10-01")
+```
+
+```{r}
+#create world map data frame
+world_map <- map_data("world")
+
+#join data frames
+covid_measures_map <- left_join(covid_measures, world_map, by = "region")
+
+```
+
+```{r}
+#plot 
+ggplot(covid_measures_map, aes(map_id = region, fill = Stringency))+
+
+#choose geom_map
+  geom_map(map = covid_measures_map,  color = "white")+
+
+#adapt limits of x and y scale
+  expand_limits(x = covid_measures_map$long, y = covid_measures_map$lat)+
+
+#select scale fill
+  scale_fill_viridis_c(option = "C")+
+  
+#add labels
+  labs(title= "Most countries currently have intermediate measures in place",subtitle = "Current stringency level of covid measures in the world", x="",y="")+
+  NULL
+```
 
 

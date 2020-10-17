@@ -1,5 +1,5 @@
 ---
-title: "Covid 19 Analysis"
+title: "Covid 19 Analysis 🦠"
 author: "Your name goes here"
 date: "`r Sys.Date()`"
 output:
@@ -285,13 +285,13 @@ ggplot(covid_measures_map, aes(map_id = region, fill = Stringency))+
   geom_map(map = covid_measures_map,  color = "white")+
 
 #adapt limits of x and y scale
-  expand_limits(x = life.exp.map$long, y = life.exp.map$lat)+
+  expand_limits(x = covid_measures_map$long, y = covid_measures_map$lat)+
 
 #select scale fill
   scale_fill_viridis_c(option = "C")+
   
 #add labels
-  labs(title= "Most countries currently have intermediate measures in place",subtitle = "Current Stringency level of covid measures in the world", x="",y="")+
+  labs(title= "Most countries currently have intermediate measures in place",subtitle = "Current stringency level of covid measures in the world", x="",y="")+
   NULL
 ```
 
