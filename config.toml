@@ -139,15 +139,13 @@ disqusShortname = ""
     # For more informtion take a look at the README.
     # To add more blogs just copy and paste the code.
 
-  Section Type Two
+  #Section Type Two
   [params.two]
     enable = true
     title = "About this website"
-    #subtitle = """I hope to use this website to provide some interesting insights from data on topics that I am personally interested in. 
-    The analysis of the pay gaps at Omega and in UK for example is based on my interest of equality in the workspace. I am excited to learn more about that
-    topics that interest me and I hope that you will find some of it interesting as well"""
-    #buttonText = "See Equal Pay Analysis"
-    #url = "projects/project4"
+    subtitle = """I hope to use this website to provide some interesting insights from data on topics that I am personally interested in. The analysis of the pay gaps at Omega and in UK for example is based on my interest of equality in the workspace. I am excited to learn more about the topics that interest me and I hope that you will find some of it interesting as well."""
+    buttonText = "See Equal Pay Analysis"
+    url = "projects/project4"
 
 
   # Contact section
