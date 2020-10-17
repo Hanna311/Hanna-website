@@ -26,6 +26,9 @@ library(countrycode)
 library(readr)
 ```
 
+![](https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png)
+
+
 # First, lets look at the data 
 ```{r, include=FALSE}
 world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")

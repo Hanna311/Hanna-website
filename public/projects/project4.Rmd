@@ -45,6 +45,7 @@ library(openintro)
 library(tidyquant)
 ```
 
+![](https://cdn.lawyer-monthly.com/Lawyer-Monthly/wp-content/uploads/2017/11/Equality-Men-Earned-30-More-Than-Women-Last-Year.jpg)
 # Omega Group - Pay Discrimination
 
 
