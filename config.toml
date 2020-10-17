@@ -89,17 +89,6 @@ disqusShortname = ""
     subtitle = "Welcome to my website where you can find out more about me 👩 and see my projects in r 💻 "
     buttonText = "About me ✏️"
 
-  # Section Type Two
-  [params.two]
-    enable = true
-    title = "Massa libero"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
-    buttonText = "Get Started"
-    url = "blogs"
 
   # Tiles Section
   [params.tiles]
@@ -149,6 +138,16 @@ disqusShortname = ""
     # at the root of this Hugo site.
     # For more informtion take a look at the README.
     # To add more blogs just copy and paste the code.
+
+  Section Type Two
+  [params.two]
+    enable = true
+    title = "About this website"
+    #subtitle = """I hope to use this website to provide some interesting insights from data on topics that I am personally interested in. 
+    The analysis of the pay gaps at Omega and in UK for example is based on my interest of equality in the workspace. I am excited to learn more about that
+    topics that interest me and I hope that you will find some of it interesting as well"""
+    #buttonText = "See Equal Pay Analysis"
+    #url = "projects/project4"
 
 
   # Contact section
