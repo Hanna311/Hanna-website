@@ -6,7 +6,16 @@
     <description>Recent content in Projects on Forty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Equal Pay Analysis 👩💼👨</title>
+      <link>/projects/project4/</link>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project4/</guid>
+      <description>Omega Group - Pay Discrimination At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women.</description>
+    </item>
+    
     <item>
       <title>CV</title>
       <link>/projects/project2/</link>
@@ -15,15 +24,6 @@
       <guid>/projects/project2/</guid>
       <description>Short Summary 🎓 Currently reading for the Masters in Financial Analysis at London Business School 💼 Previously worked in M&amp;amp;A and Private Equity 💻 Recently started exploring the world of R 🎷 Music lover who can’t wait to go to concerts again 🎿 Passionate once a year skier
  Education library(tibble) library(kableExtra) degree &amp;lt;-c(&amp;quot;MSc in Financial Analysis&amp;quot;,&amp;quot;BSc in International Business Administration&amp;quot;,&amp;quot;Global BBA (Semester Abroad)&amp;quot;, &amp;quot;International Baccalaureate&amp;quot;) years &amp;lt;- c(&amp;quot;2020-2022&amp;quot;,&amp;quot;2016-2019&amp;quot;,&amp;quot;2018&amp;quot;, &amp;quot;2013-2016&amp;quot;) institution &amp;lt;- c(&amp;quot;London Business School&amp;quot;, &amp;quot;WHU - Otto Beisheim School of Management&amp;quot;, &amp;quot;Essec Business School&amp;quot;, &amp;quot;King Edward&amp;#39;s School&amp;quot;) location &amp;lt;- c(&amp;quot;London, UK&amp;quot;, &amp;quot;Vallendar, GER&amp;quot;, &amp;quot;Paris, FR&amp;quot;, &amp;quot;Witley, UK&amp;quot;) education_frame &amp;lt;- data.</description>
-    </item>
-    
-    <item>
-      <title>Equal Pay Analysis 👩💼👨</title>
-      <link>/projects/project4/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project4/</guid>
-      <description>Omega Group plc - Pay Discrimination At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women.</description>
     </item>
     
     <item>
