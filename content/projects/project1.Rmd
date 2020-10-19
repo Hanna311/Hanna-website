@@ -49,10 +49,10 @@ library(viridis)
 
 # CDC COVID-19 Public Use Data
 
-## In this project I will look at to what extend death rates of covid 19 are impacted by gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs
+### In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs
 
-### 1. by age group, sex, and whether the patient had co-morbidities or not
-### 2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
+### 1. By age group, sex, and whether the patient had co-morbidities or not
+### 2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
 
 ```{r, cache=TRUE}
 #load the data
@@ -69,8 +69,9 @@ skim (covid_data)
 ```
 
 
-## By Age group, sex, and morbidity
+## 1. By Age group, sex, and morbidity
 ``` {r}
+#remove unknowns from relevant data
 covid_data_clean_1 <- covid_data %>% 
 filter(death_yn!="Missing") %>% 
   filter(death_yn!="Unknown") %>% 
@@ -83,37 +84,60 @@ filter(death_yn!="Missing") %>%
 ```
 
 ```{r}
-         
+ 
 covid_morb<- covid_data_clean_1 %>% 
+
+#group data by age group, death_yn, sec and medical conditions 
   group_by(age_group,death_yn,sex,medcond_yn) %>%
+  
+# count obersvations in each group 
   summarise(count=n()) %>% 
+
+#pivot wider to create two coloumns from death_yn
   pivot_wider(names_from = death_yn, values_from = count) %>% 
+
+#add coloumn for death rate 
   mutate(death_rate=(Yes/(Yes+No))) %>% 
   mutate(death_rate_perc=paste(round(100*death_rate, 1), "%", sep=""))
 
 covid_morb
 
+#turn medcond_yn into a factor 
 covid_morb$medcond_yn_f = factor(covid_morb$medcond_yn, levels=c('Yes','No'))
 
+#change label level names 
 morb.labs <- c("Without comorbidities", "With comorbidities")
 names(morb.labs) <- c(medcond_yn_f="No", medcond_yn_f="Yes")
 
+#plot data
 ggplot(covid_morb, aes(x=death_rate,y=age_group))+
   geom_col(alpha=0.8,fill="#6C7EA2")+
+  
+#use facet grid to generate four charts overall 
   facet_grid(medcond_yn_f~sex, 
                ,labeller=labeller(medcond_yn_f=morb.labs))+
+  
+#add labels 
   labs(title="Covid death rate by age group, sex and presence of co-morbidities",x="",y="")+
   scale_x_continuous(labels=scales::percent)+
+  
+#move labels in graph 
   geom_text(aes(label=death_rate_perc),nudge_x = 0.07, size=3)+
+  
+#change ratios of graph 
   coord_fixed(ratio = 0.04)+
+
+#adapt theme 
    theme(strip.background = element_rect(
      color="black", fill="grey", linetype="solid"), panel.background = element_rect(fill = "white"),panel.grid=element_line(size=0.5, colour="#F1F1EB"), panel.border = element_rect(fill=NA))
 ```
 
 
-## By age group, sex and admissions to ICU 
+## 2. By age group, sex and admissions to ICU 
 
 ``` {r}
+
+#remove unknowns from relevant data
 covid_data_clean_2 <- covid_data %>% 
   filter(death_yn!="Missing") %>% 
   filter(death_yn!="Unknown") %>% 
@@ -127,27 +151,49 @@ covid_data_clean_2 <- covid_data %>%
   filter(sex!="Other")
          
 covid_icu<- covid_data_clean_2 %>% 
+
+# group by age, death_yn, sex, and icu admission
   group_by(age_group,death_yn,sex,icu_yn) %>%
+
+# count observations
   summarise(count=n()) %>% 
+
+#pivot wider to create two coloumns from death_yn
   pivot_wider(names_from = death_yn, values_from = count) %>% 
+  
+#add coloumn for death rate
   mutate(death_rate=(Yes/(Yes+No))) %>% 
   mutate(death_rate_perc=paste(round(100*death_rate, 1), "%", sep=""))
 
 covid_icu
 
+#turn icu admissions into factor
 covid_icu$icu_yn_f = factor(covid_icu$icu_yn, levels=c('Yes','No'))
 
+#change levels for icu admissions
 icu.labs <- c("Not Admitted to ICU", "Admitted to ICU")
 names(icu.labs) <- c(icu_yn_f="No", icu_yn_f="Yes")
 
 ggplot(covid_icu, aes(x=death_rate,y=age_group))+
   geom_col(alpha=0.8,fill="#FF5B33")+
+  
+#use facet grid to generate 4 graphs
   facet_grid(icu_yn_f~sex, 
                , labeller=labeller(icu_yn_f=icu.labs))+
+
+#add labels 
   labs(title="Covid death rate by gender, age and ICU admittance",x="",y="")+
+
+# adapt scale
   scale_x_continuous(labels=scales::percent)+
+
+# move labels 
   geom_text(aes(label=death_rate_perc),nudge_x = 0.07, size=3)+
-  coord_fixed(ratio = 0.04)+
+  
+#adapt graph ratios 
+  coord_fixed(ratio = 0.05)+
+
+#add theme 
   theme(strip.background = element_rect(
      color="black", fill="grey", linetype="solid"), panel.background = element_rect(fill = "white"),panel.grid=element_line(size=0.5, colour="#F1F1EB"), panel.border = element_rect(fill=NA))
 ```
