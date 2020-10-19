@@ -120,7 +120,7 @@ ggplot(oceania,
 
 ## People in New Zealand and Australia appear to be equally happy, but what is different in these countries? 
 
-Let's plot the relationship between Happiness Score and a few key indicators
+### Let's plot the relationship between Happiness Score and a few key indicators
 
 ```{r}
 
@@ -152,7 +152,7 @@ ggplot(whr_19,
 ```
 
 
-The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner. 
+### The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner. 
 
 ## But money can't be everything. So let's look at a few more variables, but to not forget about GDP the size of the point will now represent their GDP
 

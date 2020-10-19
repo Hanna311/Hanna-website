@@ -137,7 +137,8 @@ salary_stats</code></pre>
 ## 1 female      64543.            7567.          26       -2.06          1484.
 ## 2 male        73239.            7463.          24       -2.07          1523.
 ## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
-<p>Let’s visualise these values</p>
+<div id="lets-visualise-these-values" class="section level3">
+<h3>Let’s visualise these values</h3>
 <pre class="r"><code>ggplot(salary_stats,
        
        aes(x=reorder(gender, mean_salary), 
@@ -161,15 +162,15 @@ salary_stats</code></pre>
   
   NULL</code></pre>
 <p><img src="/projects/project4_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" />
-Conclusion</p>
+### Conclusion</p>
 <p>On average the salary for men and women differs by almost 10k. However, this does not mean that the difference is necessarily significant. To evaluate whether the difference is significant we can look at the confidence intervals:</p>
 <p>The confidence Intervals do not overlap. Thus with 95% confidence we can conclude that there is a difference in population means between male and females salaries.</p>
 <p>Another way of determining whether the difference in salaries is significant is to test the null hypothesis=</p>
 <p>Mean difference in salaries is zero.</p>
 <p>We can test this using 1) t.test() and 2) the simulation method from the infer package</p>
-<ol style="list-style-type: decimal">
-<li>hypothesis testing using t.test()</li>
-</ol>
+</div>
+<div id="hypothesis-testing-using-t.test" class="section level3">
+<h3>1) hypothesis testing using t.test()</h3>
 <pre class="r"><code># first we have to check whether the populations have an equal or unequal variance using the Barlett test 
 
 salary_variance &lt;- bartlett.test(salary ~ gender, 
@@ -216,9 +217,9 @@ t_test_tidy</code></pre>
 ##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
 ## 1   -8696.    64543.    73239.     -4.09 1.65e-4        48  -12975.    -4418.
 ## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Hypothesis testing using infer package</li>
-</ol>
+</div>
+<div id="hypothesis-testing-using-infer-package" class="section level3">
+<h3>2) Hypothesis testing using infer package</h3>
 <pre class="r"><code>null_distribution &lt;- omega %&gt;% 
 
 # specify response variable and explanatory variable 
@@ -238,18 +239,18 @@ t_test_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate     stat
-##        &lt;int&gt;    &lt;dbl&gt;
-##  1         1  1911.  
-##  2         2 -1907.  
-##  3         3  1936.  
-##  4         4   547.  
-##  5         5  -353.  
-##  6         6   878.  
-##  7         7  3523.  
-##  8         8    -6.28
-##  9         9  3258.  
-## 10        10  2423.  
+##    replicate    stat
+##        &lt;int&gt;   &lt;dbl&gt;
+##  1         1 -1940. 
+##  2         2 -4519. 
+##  3         3 -1205. 
+##  4         4 -2800. 
+##  5         5 -3643. 
+##  6         6  -238. 
+##  7         7    26.8
+##  8         8  -477. 
+##  9         9  -279. 
+## 10        10 -2982. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -274,12 +275,15 @@ obs_diff_means</code></pre>
 ##   p_value
 ##     &lt;dbl&gt;
 ## 1       0</code></pre>
-<p>Conclusion:</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion:</h3>
 <p>Both methods show us that with 95% confidence we can say that there is a statistically significant difference in salaries between men and women.</p>
 <ul>
 <li><p>the t.test method shows a p value &lt; 0.05 (the difference in means we observed is highly surprising in a world where h0 holds true) a t value whose absolute value is higher than 2, and the confidence interval does not include 0</p></li>
 <li><p>the infer method shows that the probability of an observed difference in means of about 8697 is very unlikely where H0=there is no difference in means between genders holds true with p value = 0</p></li>
 </ul>
+</div>
 </div>
 <div id="relationship-experience---gender" class="section level2">
 <h2>Relationship Experience - Gender?</h2>
@@ -289,7 +293,8 @@ favstats (experience ~ gender, data=omega)</code></pre>
 <pre><code>##   gender min    Q1 median   Q3 max  mean    sd  n missing
 ## 1 female   0  0.25    3.0 14.0  29  7.38  8.51 26       0
 ## 2   male   1 15.75   19.5 31.2  44 21.12 10.92 24       0</code></pre>
-<p>First let’s have a look at the data</p>
+<div id="first-lets-have-a-look-at-the-data" class="section level3">
+<h3>First let’s have a look at the data</h3>
 <pre class="r"><code># assign name to dataframe
 
 experience_stats&lt;- omega %&gt;% 
@@ -323,7 +328,9 @@ experience_stats</code></pre>
 ## 1 female            7.38             8.51          26       -2.06           1.67
 ## 2 male             21.1             10.9           24       -2.07           2.23
 ## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
-<p>Let’s visualise this</p>
+</div>
+<div id="lets-visualise-this" class="section level3">
+<h3>Let’s visualise this</h3>
 <pre class="r"><code>ggplot(experience_stats, 
        aes(x=reorder(gender, mean_experience), 
            y=mean_experience, 
@@ -346,7 +353,9 @@ experience_stats</code></pre>
   
   NULL</code></pre>
 <p><img src="/projects/project4_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" /></p>
-<p>Now let’s do the hypothesis testing, first using t.test()</p>
+</div>
+<div id="now-lets-do-the-hypothesis-testing-first-using-t.test" class="section level3">
+<h3>Now let’s do the hypothesis testing, first using t.test()</h3>
 <pre class="r"><code># first we have to check whether the populations have an equal or unequal variance usng the Barlett test 
 
 exp_variance &lt;- bartlett.test(experience ~ gender, 
@@ -394,7 +403,9 @@ t_test_exp_tidy</code></pre>
 ##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
 ## 1    -13.7      7.38      21.1     -4.98 8.51e-6        48    -19.3     -8.20
 ## # … with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
-<p>Now with the infer package</p>
+</div>
+<div id="now-with-the-infer-package" class="section level3">
+<h3>Now with the infer package</h3>
 <pre class="r"><code>null_distribution_exp &lt;- omega %&gt;% 
 
 # specify response variable and explanatory variable 
@@ -414,18 +425,18 @@ t_test_exp_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate     stat
-##        &lt;int&gt;    &lt;dbl&gt;
-##  1         1  1911.  
-##  2         2 -1907.  
-##  3         3  1936.  
-##  4         4   547.  
-##  5         5  -353.  
-##  6         6   878.  
-##  7         7  3523.  
-##  8         8    -6.28
-##  9         9  3258.  
-## 10        10  2423.  
+##    replicate    stat
+##        &lt;int&gt;   &lt;dbl&gt;
+##  1         1 -1940. 
+##  2         2 -4519. 
+##  3         3 -1205. 
+##  4         4 -2800. 
+##  5         5 -3643. 
+##  6         6  -238. 
+##  7         7    26.8
+##  8         8  -477. 
+##  9         9  -279. 
+## 10        10 -2982. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -450,7 +461,9 @@ obs_diff_means_exp</code></pre>
 ##   p_value
 ##     &lt;dbl&gt;
 ## 1       0</code></pre>
-<p>Conclusion:</p>
+</div>
+<div id="conclusion-1" class="section level3">
+<h3>Conclusion:</h3>
 <p>Both methods show us that there is a statistically significant difference in experience between men and women</p>
 <ul>
 <li><p>summary statistics show that the confidence intervals do not overlap</p></li>
@@ -459,9 +472,11 @@ obs_diff_means_exp</code></pre>
 </ul>
 <p>There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination.</p>
 </div>
+</div>
 <div id="relationship-salary---experience" class="section level2">
 <h2>Relationship Salary - Experience ?</h2>
-<p>Let’s have a closer look at the relationship between experience in salary using a scatter plot</p>
+<div id="lets-have-a-closer-look-at-the-relationship-between-experience-in-salary-using-a-scatter-plot" class="section level3">
+<h3>Let’s have a closer look at the relationship between experience in salary using a scatter plot</h3>
 <pre class="r"><code># create plot from data omega where x axis shows experience, and y axis shows salary
 
 ggplot(omega, aes(x = experience, y=salary,color=gender))+
@@ -486,6 +501,7 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
   
   NULL</code></pre>
 <p><img src="/projects/project4_files/figure-html/salary_exp_scatter-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 </div>
 <div id="uk-gender-pay-gap-2017" class="section level1">
@@ -933,7 +949,9 @@ UK_pay_gap_hourly</code></pre>
 ##   mean_diff_bonus
 ##             &lt;dbl&gt;
 ## 1            20.1</code></pre>
-<p>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</p>
+<div id="on-average-women-are-paid-15-less-than-men-per-hour-and-receive-a-20-smaller-bonus." class="section level3">
+<h3>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</h3>
+</div>
 </div>
 <div id="does-the-pay-gap-differ-by-company-size" class="section level2">
 <h2>Does the pay gap differ by company size?</h2>
@@ -987,7 +1005,7 @@ hourly_diff_stats</code></pre>
 ## 1             14.3             14.9       10565       -1.96          0.145
 ## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
 </div>
-<div id="now-lets-do-the-hypothesis-testing-first-using-t.test" class="section level3">
+<div id="now-lets-do-the-hypothesis-testing-first-using-t.test-1" class="section level3">
 <h3>Now let’s do the hypothesis testing, first using t.test()</h3>
 <p>H0: the percentage difference in hourly wages is 0</p>
 <pre class="r"><code>t.test(gender_pay_gap$DiffMeanHourlyPercent, 
@@ -1005,7 +1023,9 @@ hourly_diff_stats</code></pre>
 ## sample estimates:
 ## mean of x 
 ##      14.3</code></pre>
-<p>Results:</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results:</h3>
 <ul>
 <li><p>Summary Statistics: The confidence Interval does not include 0 -&gt; the percentage difference in hourly wages between man and women is significant at a 95% level</p></li>
 <li><p>T.Test: t value is larger than 2, p value is &lt; 0.05, we can reject the H0 i.e. the percentage difference in hourly wages is 0</p></li>

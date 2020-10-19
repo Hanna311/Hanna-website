@@ -288,7 +288,8 @@ summary(bin_extra_people)</code></pre>
 </div>
 <div id="what-is-the-effect-of-reviews-per-month-review-scores-and-number-on-price" class="section level2">
 <h2>What is the effect of reviews per month / review scores and number on price?</h2>
-<p>Review Scores</p>
+<div id="review-scores" class="section level3">
+<h3>Review Scores</h3>
 <pre class="r"><code>#create a plot 
 ggplot(Listings_variables_of_interest, 
        aes(x=review_scores_rating,y=price))+
@@ -313,7 +314,9 @@ theme_economist()+
 
   NULL</code></pre>
 <p><img src="/projects/project6_files/figure-html/unnamed-chunk-10-1.png" width="648" style="display: block; margin: auto;" /></p>
-<p>Number of reviews per month</p>
+</div>
+<div id="number-of-reviews-per-month" class="section level3">
+<h3>Number of reviews per month</h3>
 <pre class="r"><code>#create a plot 
 ggplot(Listings_variables_of_interest, 
        aes(x=reviews_per_month,y=price))+
@@ -340,6 +343,7 @@ theme_economist()+
   NULL</code></pre>
 <p><img src="/projects/project6_files/figure-html/unnamed-chunk-11-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
+</div>
 <div id="what-is-the-effect-of-bed-type-on-price" class="section level2">
 <h2>What is the effect of bed type on price?</h2>
 <pre class="r"><code>#creating averages for different bed types
@@ -360,9 +364,7 @@ average price?&quot;,
        &quot;)+
   theme_economist()+
   NULL</code></pre>
-<p><img src="/projects/project6_files/figure-html/unnamed-chunk-12-1.png" width="648" style="display: block; margin: auto;" />
-Key findings:
-*We found out that the airbnbs with real beds have the highest average price while the ones with airbeds have the lowest average price.That makes a lot of sense for us since the more comfortable the beds, the higher price of the listings.</p>
+<p><img src="/projects/project6_files/figure-html/unnamed-chunk-12-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
 <div id="what-is-the-effect-of-property-type-on-price" class="section level2">
 <h2>What is the effect of property type on price?</h2>
@@ -387,10 +389,7 @@ mean price&quot;,
   
   theme_economist()+
   NULL</code></pre>
-<p><img src="/projects/project6_files/figure-html/unnamed-chunk-13-1.png" width="648" style="display: block; margin: auto;" />
-Key findings
-<em>Serviced appartments have the highest mean prices
-</em>Average prices by property type vary significantly</p>
+<p><img src="/projects/project6_files/figure-html/unnamed-chunk-13-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
 <div id="what-is-the-effect-of-being-a-superhost-on-price" class="section level2">
 <h2>What is the effect of being a superhost on price?</h2>
@@ -411,9 +410,7 @@ ggplot(average_host_is_superhost,
         x=&quot;Average price&quot;,y=&quot;Superhost or not&quot;)+ 
   theme_economist()+
   NULL</code></pre>
-<p><img src="/projects/project6_files/figure-html/unnamed-chunk-14-1.png" width="648" style="display: block; margin: auto;" />
-Key findings
-*Superhosts have a higerh average listing price</p>
+<p><img src="/projects/project6_files/figure-html/unnamed-chunk-14-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
 <div id="what-is-the-effect-of-location-on-price" class="section level2">
 <h2>What is the effect of location on price?</h2>

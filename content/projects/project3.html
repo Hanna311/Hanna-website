@@ -280,7 +280,8 @@ ggplot(oceania,
 </div>
 <div id="people-in-new-zealand-and-australia-appear-to-be-equally-happy-but-what-is-different-in-these-countries" class="section level2">
 <h2>People in New Zealand and Australia appear to be equally happy, but what is different in these countries?</h2>
-<p>Let’s plot the relationship between Happiness Score and a few key indicators</p>
+<div id="lets-plot-the-relationship-between-happiness-score-and-a-few-key-indicators" class="section level3">
+<h3>Let’s plot the relationship between Happiness Score and a few key indicators</h3>
 <pre class="r"><code>#create subset for highlighted points
 highlight_oceania &lt;- whr_19 %&gt;% 
   filter(continent==&quot;Oceania&quot;)
@@ -306,7 +307,10 @@ ggplot(whr_19,
   theme_economist()+
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner.</p>
+</div>
+<div id="the-graph-shows-that-unsurprisingly-there-is-a-strong-positive-relationship-between-gdp-per-capita-and-happiness-score.-you-can-see-that-many-of-the-countries-in-the-continents-that-have-a-high-average-happiness-score-are-positioned-in-the-upper-corner-of-the-graph-e.g.-oceania-represented-by-larger-points-while-the-countries-in-the-continents-that-have-a-low-average-happiness-score-are-in-the-lower-corner." class="section level3">
+<h3>The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner.</h3>
+</div>
 </div>
 <div id="but-money-cant-be-everything.-so-lets-look-at-a-few-more-variables-but-to-not-forget-about-gdp-the-size-of-the-point-will-now-represent-their-gdp" class="section level2">
 <h2>But money can’t be everything. So let’s look at a few more variables, but to not forget about GDP the size of the point will now represent their GDP</h2>

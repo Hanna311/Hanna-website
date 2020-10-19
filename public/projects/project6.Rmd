@@ -260,7 +260,7 @@ leaflet(data = filter(listings, minimum_nights <= 4)) %>%
 
 ## What is the effect of reviews per month / review scores and number on price?
 
-Review Scores
+### Review Scores
 ```{r}
 #create a plot 
 ggplot(Listings_variables_of_interest, 
@@ -288,7 +288,7 @@ theme_economist()+
 
 ```
 
-Number of reviews per month 
+### Number of reviews per month 
 ```{r}
 #create a plot 
 ggplot(Listings_variables_of_interest, 
@@ -338,8 +338,6 @@ average price?",
   theme_economist()+
   NULL
 ```
-Key findings:
-*We found out that the airbnbs with real beds have the highest average price while the ones with airbeds have the lowest average price.That makes a lot of sense for us since the more comfortable the beds, the higher price of the listings. 
 
 ## What is the effect of property type on price?
 ```{r}
@@ -365,9 +363,6 @@ mean price",
   theme_economist()+
   NULL
 ```
-Key findings
-*Serviced appartments have the highest mean prices
-*Average prices by property type vary significantly
 
 ## What is the effect of being a superhost on price?
 ```{r}
@@ -389,8 +384,6 @@ ggplot(average_host_is_superhost,
   theme_economist()+
   NULL
 ```
-Key findings
-*Superhosts have a higerh average listing price
 
 ## What is the effect of location on price?
 ```{r}
