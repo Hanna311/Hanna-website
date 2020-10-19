@@ -24,7 +24,7 @@
       
       <guid>/projects/project1/</guid>
       <description>Covid 19
- In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs:  1. By age group, sex, and whether the patient had co-morbidities or not  2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not  Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development ofthe pandemic within selected european countries.</description>
+ In this project I will look at how covid-19 death rates are affected by variables such as gender, age, co-morbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs:  1. By age group, sex, and whether the patient had co-morbidities or not  2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not  Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development of the pandemic within selected european countries.</description>
     </item>
     
     <item>
@@ -66,8 +66,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/project3/</guid>
-      <description>First, lets look at the data skim(world_happiness_report_2019)  Table 1: Data summary  Name world_happiness_report_20…  Number of rows 156  Number of columns 9  _______________________   Column type frequency:   character 1  numeric 8  ________________________   Group variables None    Variable type: character
-  skim_variable n_missing complete_rate min max empty n_unique whitespace    Country or region 0 1 4 24 0 156 0    Variable type: numeric</description>
+      <description>## The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.
+First, lets look at the data skim(world_happiness_report_2019)  Table 1: Data summary  Name world_happiness_report_20…  Number of rows 156  Number of columns 9  _______________________   Column type frequency:   character 1  numeric 8  ________________________   Group variables None    Variable type: character</description>
     </item>
     
   </channel>

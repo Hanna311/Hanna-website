@@ -5,9 +5,10 @@ output: html_document
 
 
 
-<p><img src="https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png" /></p>
-<div id="first-lets-look-at-the-data" class="section level1">
-<h1>First, lets look at the data</h1>
+<p><img src="https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png" />
+## The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.</p>
+<div id="first-lets-look-at-the-data" class="section level2">
+<h2>First, lets look at the data</h2>
 <pre class="r"><code>skim(world_happiness_report_2019)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 1: </span>Data summary</caption>
@@ -202,8 +203,8 @@ output: html_document
 </tbody>
 </table>
 </div>
-<div id="second-lets-look-at-happiness-by-country" class="section level1">
-<h1>Second, lets look at happiness by country</h1>
+<div id="second-lets-look-at-happiness-by-country" class="section level2">
+<h2>Second, lets look at happiness by country</h2>
 <pre class="r"><code>whr_19 &lt;- world_happiness_report_2019 %&gt;% 
   rename(country = `Country or region`) %&gt;%  
   rename(GDP= `GDP per capita`) %&gt;% 
@@ -233,7 +234,9 @@ ggplot(by_continent,aes(
   geom_col()+
 
 #add labels
-  labs(x=&quot;Continent&quot;, y=&quot;Average Happiness Score&quot;,title = &quot;Oceania is the happiest continent
+  labs(x=&quot;
+  Continent&quot;, y=&quot;Average Happiness Score
+  &quot;,title = &quot;Oceania is the happiest continent
        &quot;, subtitle = &quot;Average Happiness Score by country&quot;)+
     
 #add theme
@@ -244,10 +247,10 @@ ggplot(by_continent,aes(
     NULL</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="what-makes-people-in-oceania-so-happy" class="section level1">
-<h1>What makes people in Oceania so happy?</h1>
-<div id="first-lets-look-at-the-different-countries-within-oceania" class="section level2">
-<h2>First let’s look at the different countries within Oceania</h2>
+<div id="what-makes-people-in-oceania-so-happy" class="section level2">
+<h2>What makes people in Oceania so happy?</h2>
+<div id="first-lets-look-at-the-different-countries-within-oceania" class="section level3">
+<h3>First let’s look at the different countries within Oceania</h3>
 <pre class="r"><code>#filter data for Oceania
 oceania &lt;- whr_19 %&gt;% 
   filter(continent==&quot;Oceania&quot;)
@@ -277,6 +280,7 @@ ggplot(oceania,
     
   NULL</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
 </div>
 <div id="people-in-new-zealand-and-australia-appear-to-be-equally-happy-but-what-is-different-in-these-countries" class="section level2">
 <h2>People in New Zealand and Australia appear to be equally happy, but what is different in these countries?</h2>
@@ -350,7 +354,6 @@ ggplot(whr_19,
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
-<div id="overall-we-can-conclude-that-a-high-gdp-social-support-and-a-high-life-expectancy-contribute-to-the-overall-happiness-within-a-country." class="section level2">
-<h2>Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country.</h2>
-</div>
+<div id="overall-we-can-conclude-that-a-high-gdp-social-support-and-a-high-life-expectancy-contribute-to-the-overall-happiness-within-a-country.-we-can-see-that-two-countries-on-the-happiest-continent-in-the-world-score-very-highly-in-all-three-categories." class="section level2">
+<h2>Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent in the world score very highly in all three categories.</h2>
 </div>

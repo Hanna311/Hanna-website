@@ -87,8 +87,8 @@
 <img src="https://img.jakpost.net/c/2020/05/20/2020_05_20_95707_1589954243._large.jpg" alt="" />
 <p class="caption">Covid 19</p>
 </div>
-<div id="in-this-project-i-will-look-at-how-covid-19-death-rates-are-affected-by-variables-such-as-gender-age-cormorbidities-and-whether-the-patient-has-been-admitted-to-the-icu.-for-this-purpose-i-will-create-two-graphs" class="section level3">
-<h3>In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs:</h3>
+<div id="in-this-project-i-will-look-at-how-covid-19-death-rates-are-affected-by-variables-such-as-gender-age-co-morbidities-and-whether-the-patient-has-been-admitted-to-the-icu.-for-this-purpose-i-will-create-two-graphs" class="section level3">
+<h3>In this project I will look at how covid-19 death rates are affected by variables such as gender, age, co-morbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs:</h3>
 </div>
 <div id="by-age-group-sex-and-whether-the-patient-had-co-morbidities-or-not" class="section level3">
 <h3>1. By age group, sex, and whether the patient had co-morbidities or not</h3>
@@ -96,8 +96,8 @@
 <div id="by-age-group-sex-and-whether-the-patient-was-admited-to-intensive-care-unit-icu-or-not" class="section level3">
 <h3>2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not</h3>
 </div>
-<div id="given-that-the-data-for-those-graphs-is-provided-only-for-the-usa-i-will-consequently-also-have-a-look-at-the-development-ofthe-pandemic-within-selected-european-countries." class="section level3">
-<h3>Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development ofthe pandemic within selected european countries.</h3>
+<div id="given-that-the-data-for-those-graphs-is-provided-only-for-the-usa-i-will-consequently-also-have-a-look-at-the-development-of-the-pandemic-within-selected-european-countries." class="section level3">
+<h3>Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development of the pandemic within selected european countries.</h3>
 <pre class="r"><code>#load the data
 url &lt;- &quot;https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD&quot;
 
@@ -286,8 +286,8 @@ covid_data &lt;- vroom::vroom(url)%&gt;% # If vroom::vroom(url) doesn&#39;t work
 </tbody>
 </table>
 </div>
-<div id="by-age-group-sex-and-morbidity" class="section level2">
-<h2>1. By Age group, sex, and morbidity</h2>
+<div id="by-age-group-sex-and-morbidity" class="section level3">
+<h3>1. By Age group, sex, and morbidity</h3>
 <pre class="r"><code>#remove unknowns from relevant data
 covid_data_clean_1 &lt;- covid_data %&gt;% 
 filter(death_yn!=&quot;Missing&quot;) %&gt;% 
@@ -359,8 +359,8 @@ ggplot(covid_morb, aes(x=death_rate,y=age_group))+
      color=&quot;black&quot;, fill=&quot;grey&quot;, linetype=&quot;solid&quot;), panel.background = element_rect(fill = &quot;white&quot;),panel.grid=element_line(size=0.5, colour=&quot;#F1F1EB&quot;), panel.border = element_rect(fill=NA))</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="by-age-group-sex-and-admissions-to-icu" class="section level2">
-<h2>2. By age group, sex and admissions to ICU</h2>
+<div id="by-age-group-sex-and-admissions-to-icu" class="section level3">
+<h3>2. By age group, sex and admissions to ICU</h3>
 <pre class="r"><code>#remove unknowns from relevant data
 covid_data_clean_2 &lt;- covid_data %&gt;% 
   filter(death_yn!=&quot;Missing&quot;) %&gt;% 
@@ -436,613 +436,15 @@ ggplot(covid_icu, aes(x=death_rate,y=age_group))+
      color=&quot;black&quot;, fill=&quot;grey&quot;, linetype=&quot;solid&quot;), panel.background = element_rect(fill = &quot;white&quot;),panel.grid=element_line(size=0.5, colour=&quot;#F1F1EB&quot;), panel.border = element_rect(fill=NA))</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="covid-cases-in-other-countries" class="section level1">
-<h1>Covid cases in other countries</h1>
-<div id="given-that-this-data-was-collected-by-the-cdc-it-only-provides-information-on-the-covid-epidemic-in-the-us.-as-an-european-i-would-like-to-have-a-closer-look-at-how-covid-19-has-developed-in-europe." class="section level2">
-<h2>Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at how Covid-19 has developed in Europe.</h2>
+<div id="covid-cases-in-other-countries" class="section level2">
+<h2>Covid cases in other countries</h2>
+<div id="given-that-this-data-was-collected-by-the-cdc-it-only-provides-information-on-the-covid-epidemic-in-the-us.-as-an-european-i-would-like-to-have-a-closer-look-at-how-covid-19-has-developed-in-europe." class="section level3">
+<h3>Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at how Covid-19 has developed in Europe.</h3>
 <pre class="r"><code>#download the data
-covid_more&lt;- read_csv(&quot;~/desktop/Hanna-website/data/coviddata.csv&quot;)
-
-#have a look at the data
-skim(covid_more)</code></pre>
-<table>
-<caption><span id="tab:unnamed-chunk-6">Table 2: </span>Data summary</caption>
-<tbody>
-<tr class="odd">
-<td align="left">Name</td>
-<td align="left">covid_more</td>
-</tr>
-<tr class="even">
-<td align="left">Number of rows</td>
-<td align="left">50725</td>
-</tr>
-<tr class="odd">
-<td align="left">Number of columns</td>
-<td align="left">41</td>
-</tr>
-<tr class="even">
-<td align="left">_______________________</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">Column type frequency:</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">character</td>
-<td align="left">3</td>
-</tr>
-<tr class="odd">
-<td align="left">Date</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">logical</td>
-<td align="left">9</td>
-</tr>
-<tr class="odd">
-<td align="left">numeric</td>
-<td align="left">28</td>
-</tr>
-<tr class="even">
-<td align="left">________________________</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">Group variables</td>
-<td align="left">None</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: character</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">skim_variable</th>
-<th align="right">n_missing</th>
-<th align="right">complete_rate</th>
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="right">empty</th>
-<th align="right">n_unique</th>
-<th align="right">whitespace</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">iso_code</td>
-<td align="right">292</td>
-<td align="right">0.99</td>
-<td align="right">3</td>
-<td align="right">8</td>
-<td align="right">0</td>
-<td align="right">212</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="right">584</td>
-<td align="right">0.99</td>
-<td align="right">4</td>
-<td align="right">13</td>
-<td align="right">0</td>
-<td align="right">6</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">location</td>
-<td align="right">0</td>
-<td align="right">1.00</td>
-<td align="right">4</td>
-<td align="right">32</td>
-<td align="right">0</td>
-<td align="right">213</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: Date</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">skim_variable</th>
-<th align="right">n_missing</th>
-<th align="right">complete_rate</th>
-<th align="left">min</th>
-<th align="left">max</th>
-<th align="left">median</th>
-<th align="right">n_unique</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">date</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="left">2019-12-31</td>
-<td align="left">2020-10-17</td>
-<td align="left">2020-06-19</td>
-<td align="right">292</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: logical</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">skim_variable</th>
-<th align="right">n_missing</th>
-<th align="right">complete_rate</th>
-<th align="right">mean</th>
-<th align="left">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">new_tests</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="even">
-<td align="left">total_tests</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="odd">
-<td align="left">total_tests_per_thousand</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="even">
-<td align="left">new_tests_per_thousand</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="odd">
-<td align="left">new_tests_smoothed</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="even">
-<td align="left">new_tests_smoothed_per_thousand</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="odd">
-<td align="left">tests_per_case</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="even">
-<td align="left">positive_rate</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-<tr class="odd">
-<td align="left">tests_units</td>
-<td align="right">50725</td>
-<td align="right">0</td>
-<td align="right">NaN</td>
-<td align="left">:</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: numeric</strong></p>
-<table style="width:100%;">
-<colgroup>
-<col width="25%" />
-<col width="8%" />
-<col width="11%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="4%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">skim_variable</th>
-<th align="right">n_missing</th>
-<th align="right">complete_rate</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">p0</th>
-<th align="right">p25</th>
-<th align="right">p50</th>
-<th align="right">p75</th>
-<th align="right">p100</th>
-<th align="left">hist</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">total_cases</td>
-<td align="right">3648</td>
-<td align="right">0.93</td>
-<td align="right">1.29e+05</td>
-<td align="right">1.30e+06</td>
-<td align="right">1.00</td>
-<td align="right">1.41e+02</td>
-<td align="right">1.62e+03</td>
-<td align="right">1.63e+04</td>
-<td align="right">3.94e+07</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">new_cases</td>
-<td align="right">864</td>
-<td align="right">0.98</td>
-<td align="right">1.58e+03</td>
-<td align="right">1.43e+04</td>
-<td align="right">-8261.00</td>
-<td align="right">0.00e+00</td>
-<td align="right">1.20e+01</td>
-<td align="right">1.87e+02</td>
-<td align="right">3.96e+05</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">new_cases_smoothed</td>
-<td align="right">1648</td>
-<td align="right">0.97</td>
-<td align="right">1.56e+03</td>
-<td align="right">1.40e+04</td>
-<td align="right">-552.00</td>
-<td align="right">7.10e-01</td>
-<td align="right">1.67e+01</td>
-<td align="right">1.93e+02</td>
-<td align="right">3.48e+05</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">total_deaths</td>
-<td align="right">12318</td>
-<td align="right">0.76</td>
-<td align="right">5.97e+03</td>
-<td align="right">4.83e+04</td>
-<td align="right">1.00</td>
-<td align="right">1.10e+01</td>
-<td align="right">6.90e+01</td>
-<td align="right">5.97e+02</td>
-<td align="right">1.11e+06</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">new_deaths</td>
-<td align="right">864</td>
-<td align="right">0.98</td>
-<td align="right">4.43e+01</td>
-<td align="right">3.71e+02</td>
-<td align="right">-1918.00</td>
-<td align="right">0.00e+00</td>
-<td align="right">0.00e+00</td>
-<td align="right">3.00e+00</td>
-<td align="right">1.05e+04</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">new_deaths_smoothed</td>
-<td align="right">1648</td>
-<td align="right">0.97</td>
-<td align="right">4.44e+01</td>
-<td align="right">3.60e+02</td>
-<td align="right">-232.14</td>
-<td align="right">0.00e+00</td>
-<td align="right">2.90e-01</td>
-<td align="right">3.43e+00</td>
-<td align="right">7.46e+03</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">total_cases_per_million</td>
-<td align="right">3904</td>
-<td align="right">0.92</td>
-<td align="right">2.39e+03</td>
-<td align="right">4.75e+03</td>
-<td align="right">0.00</td>
-<td align="right">6.87e+01</td>
-<td align="right">4.51e+02</td>
-<td align="right">2.62e+03</td>
-<td align="right">4.54e+04</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">new_cases_per_million</td>
-<td align="right">928</td>
-<td align="right">0.98</td>
-<td align="right">2.84e+01</td>
-<td align="right">1.02e+02</td>
-<td align="right">-2212.54</td>
-<td align="right">0.00e+00</td>
-<td align="right">1.78e+00</td>
-<td align="right">2.05e+01</td>
-<td align="right">8.65e+03</td>
-<td align="left">▁▇▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">new_cases_smoothed_per_million</td>
-<td align="right">1713</td>
-<td align="right">0.97</td>
-<td align="right">2.75e+01</td>
-<td align="right">6.65e+01</td>
-<td align="right">-269.98</td>
-<td align="right">1.80e-01</td>
-<td align="right">3.33e+00</td>
-<td align="right">2.30e+01</td>
-<td align="right">2.47e+03</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">total_deaths_per_million</td>
-<td align="right">12559</td>
-<td align="right">0.75</td>
-<td align="right">8.32e+01</td>
-<td align="right">1.67e+02</td>
-<td align="right">0.00</td>
-<td align="right">3.29e+00</td>
-<td align="right">1.68e+01</td>
-<td align="right">6.84e+01</td>
-<td align="right">1.24e+03</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">new_deaths_per_million</td>
-<td align="right">928</td>
-<td align="right">0.98</td>
-<td align="right">5.80e-01</td>
-<td align="right">2.95e+00</td>
-<td align="right">-67.90</td>
-<td align="right">0.00e+00</td>
-<td align="right">0.00e+00</td>
-<td align="right">2.30e-01</td>
-<td align="right">2.15e+02</td>
-<td align="left">▁▇▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">new_deaths_smoothed_per_million</td>
-<td align="right">1713</td>
-<td align="right">0.97</td>
-<td align="right">5.80e-01</td>
-<td align="right">1.87e+00</td>
-<td align="right">-9.68</td>
-<td align="right">0.00e+00</td>
-<td align="right">2.00e-02</td>
-<td align="right">3.30e-01</td>
-<td align="right">6.31e+01</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">stringency_index</td>
-<td align="right">8718</td>
-<td align="right">0.83</td>
-<td align="right">5.71e+01</td>
-<td align="right">2.69e+01</td>
-<td align="right">0.00</td>
-<td align="right">3.89e+01</td>
-<td align="right">6.20e+01</td>
-<td align="right">7.87e+01</td>
-<td align="right">1.00e+02</td>
-<td align="left">▃▃▆▇▆</td>
-</tr>
-<tr class="even">
-<td align="left">population</td>
-<td align="right">292</td>
-<td align="right">0.99</td>
-<td align="right">8.73e+07</td>
-<td align="right">6.08e+08</td>
-<td align="right">809.00</td>
-<td align="right">1.40e+06</td>
-<td align="right">8.28e+06</td>
-<td align="right">2.98e+07</td>
-<td align="right">7.79e+09</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">population_density</td>
-<td align="right">2619</td>
-<td align="right">0.95</td>
-<td align="right">3.61e+02</td>
-<td align="right">1.65e+03</td>
-<td align="right">0.14</td>
-<td align="right">3.77e+01</td>
-<td align="right">8.81e+01</td>
-<td align="right">2.14e+02</td>
-<td align="right">1.93e+04</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">median_age</td>
-<td align="right">5533</td>
-<td align="right">0.89</td>
-<td align="right">3.13e+01</td>
-<td align="right">9.03e+00</td>
-<td align="right">15.10</td>
-<td align="right">2.33e+01</td>
-<td align="right">3.11e+01</td>
-<td align="right">3.97e+01</td>
-<td align="right">4.82e+01</td>
-<td align="left">▇▅▇▆▆</td>
-</tr>
-<tr class="odd">
-<td align="left">aged_65_older</td>
-<td align="right">6209</td>
-<td align="right">0.88</td>
-<td align="right">9.23e+00</td>
-<td align="right">6.31e+00</td>
-<td align="right">1.14</td>
-<td align="right">3.55e+00</td>
-<td align="right">6.98e+00</td>
-<td align="right">1.48e+01</td>
-<td align="right">2.71e+01</td>
-<td align="left">▇▃▂▃▁</td>
-</tr>
-<tr class="even">
-<td align="left">aged_70_older</td>
-<td align="right">5768</td>
-<td align="right">0.89</td>
-<td align="right">5.83e+00</td>
-<td align="right">4.31e+00</td>
-<td align="right">0.53</td>
-<td align="right">2.08e+00</td>
-<td align="right">4.39e+00</td>
-<td align="right">9.47e+00</td>
-<td align="right">1.85e+01</td>
-<td align="left">▇▃▂▂▁</td>
-</tr>
-<tr class="odd">
-<td align="left">gdp_per_capita</td>
-<td align="right">6127</td>
-<td align="right">0.88</td>
-<td align="right">2.08e+04</td>
-<td align="right">2.04e+04</td>
-<td align="right">661.24</td>
-<td align="right">5.34e+03</td>
-<td align="right">1.40e+04</td>
-<td align="right">3.14e+04</td>
-<td align="right">1.17e+05</td>
-<td align="left">▇▃▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">extreme_poverty</td>
-<td align="right">20983</td>
-<td align="right">0.59</td>
-<td align="right">1.22e+01</td>
-<td align="right">1.93e+01</td>
-<td align="right">0.10</td>
-<td align="right">5.00e-01</td>
-<td align="right">2.00e+00</td>
-<td align="right">1.81e+01</td>
-<td align="right">7.76e+01</td>
-<td align="left">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">cardiovasc_death_rate</td>
-<td align="right">5546</td>
-<td align="right">0.89</td>
-<td align="right">2.52e+02</td>
-<td align="right">1.17e+02</td>
-<td align="right">79.37</td>
-<td align="right">1.56e+02</td>
-<td align="right">2.38e+02</td>
-<td align="right">3.19e+02</td>
-<td align="right">7.24e+02</td>
-<td align="left">▇▇▃▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">diabetes_prevalence</td>
-<td align="right">3923</td>
-<td align="right">0.92</td>
-<td align="right">8.05e+00</td>
-<td align="right">4.15e+00</td>
-<td align="right">0.99</td>
-<td align="right">5.31e+00</td>
-<td align="right">7.11e+00</td>
-<td align="right">1.04e+01</td>
-<td align="right">2.34e+01</td>
-<td align="left">▅▇▃▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">female_smokers</td>
-<td align="right">15417</td>
-<td align="right">0.70</td>
-<td align="right">1.08e+01</td>
-<td align="right">1.05e+01</td>
-<td align="right">0.10</td>
-<td align="right">1.90e+00</td>
-<td align="right">6.40e+00</td>
-<td align="right">1.96e+01</td>
-<td align="right">4.40e+01</td>
-<td align="left">▇▂▂▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">male_smokers</td>
-<td align="right">15868</td>
-<td align="right">0.69</td>
-<td align="right">3.26e+01</td>
-<td align="right">1.34e+01</td>
-<td align="right">7.70</td>
-<td align="right">2.14e+01</td>
-<td align="right">3.14e+01</td>
-<td align="right">4.09e+01</td>
-<td align="right">7.81e+01</td>
-<td align="left">▆▇▆▂▁</td>
-</tr>
-<tr class="odd">
-<td align="left">handwashing_facilities</td>
-<td align="right">29484</td>
-<td align="right">0.42</td>
-<td align="right">5.23e+01</td>
-<td align="right">3.16e+01</td>
-<td align="right">1.19</td>
-<td align="right">2.12e+01</td>
-<td align="right">5.22e+01</td>
-<td align="right">8.37e+01</td>
-<td align="right">9.90e+01</td>
-<td align="left">▆▃▅▅▇</td>
-</tr>
-<tr class="even">
-<td align="left">hospital_beds_per_thousand</td>
-<td align="right">9965</td>
-<td align="right">0.80</td>
-<td align="right">3.10e+00</td>
-<td align="right">2.52e+00</td>
-<td align="right">0.10</td>
-<td align="right">1.30e+00</td>
-<td align="right">2.50e+00</td>
-<td align="right">4.20e+00</td>
-<td align="right">1.38e+01</td>
-<td align="left">▇▃▂▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">life_expectancy</td>
-<td align="right">934</td>
-<td align="right">0.98</td>
-<td align="right">7.40e+01</td>
-<td align="right">7.38e+00</td>
-<td align="right">53.28</td>
-<td align="right">6.99e+01</td>
-<td align="right">7.54e+01</td>
-<td align="right">7.94e+01</td>
-<td align="right">8.68e+01</td>
-<td align="left">▁▃▅▇▅</td>
-</tr>
-<tr class="even">
-<td align="left">human_development_index</td>
-<td align="right">7123</td>
-<td align="right">0.86</td>
-<td align="right">7.20e-01</td>
-<td align="right">1.50e-01</td>
-<td align="right">0.35</td>
-<td align="right">6.00e-01</td>
-<td align="right">7.50e-01</td>
-<td align="right">8.50e-01</td>
-<td align="right">9.50e-01</td>
-<td align="left">▂▅▅▇▇</td>
-</tr>
-</tbody>
-</table>
+covid_more&lt;- read_csv(&quot;~/desktop/Hanna-website/data/coviddata.csv&quot;)</code></pre>
 </div>
-<div id="first-lets-compare-the-number-of-total-cases-in-a-few-european-countries" class="section level2">
-<h2>First let’s compare the number of total cases in a few European countries</h2>
+<div id="first-lets-compare-the-number-of-total-cases-in-a-few-european-countries" class="section level3">
+<h3>First let’s compare the number of total cases in a few European countries</h3>
 <pre class="r"><code>covid_europe &lt;- covid_more %&gt;%
   
 #filter data for countries
@@ -1069,8 +471,8 @@ skim(covid_more)</code></pre>
   NULL</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-8-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="now-that-we-know-that-the-uk-and-france-have-the-highest-total-number-of-covid-cases.-lets-have-a-look-at-the-measures-these-countries-have-put-in-place-in-response." class="section level2">
-<h2>Now that we know that the UK and France have the highest total number of covid cases. Let’s have a look at the measures these countries have put in place in response.</h2>
+<div id="now-that-we-know-that-the-uk-and-france-have-the-highest-total-number-of-covid-cases.-lets-have-a-look-at-the-measures-these-countries-have-put-in-place-in-response." class="section level3">
+<h3>Now that we know that the UK and France have the highest total number of covid cases. Let’s have a look at the measures these countries have put in place in response.</h3>
 <pre class="r"><code>ggplot(covid_europe, aes(x=date, y=stringency_index, color=location))+
   
 #choose graph type
@@ -1090,11 +492,11 @@ skim(covid_more)</code></pre>
   NULL</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="as-you-can-see-from-the-graph-the-uk-and-france-also-have-the-strictest-covid-measures-as-measured-by-the-stringency-index." class="section level2">
-<h2>As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index.</h2>
+<div id="as-you-can-see-from-the-graph-the-uk-and-france-also-have-the-strictest-covid-measures-as-measured-by-the-stringency-index." class="section level3">
+<h3>As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index.</h3>
 </div>
-<div id="now-lets-have-a-look-at-whether-strict-measures-have-an-effect-on-daily-new-cases." class="section level2">
-<h2>Now let’s have a look at whether strict measures have an effect on daily new cases.</h2>
+<div id="now-lets-have-a-look-at-whether-strict-measures-have-an-effect-on-daily-new-cases." class="section level3">
+<h3>Now let’s have a look at whether strict measures have an effect on daily new cases.</h3>
 <pre class="r"><code>ggplot(covid_europe, aes(x=date, y=new_cases, color=stringency_index))+
   
 #choose graph type
@@ -1122,8 +524,8 @@ skim(covid_more)</code></pre>
   NULL</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-10-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="now-onto-what-we-really-care-about-is-there-any-country-in-this-world-where-you-do-not-have-to-adhere-to-strict-covid-measures-well-i-have-created-a-map." class="section level2">
-<h2>Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map.</h2>
+<div id="now-onto-what-we-really-care-about-is-there-any-country-in-this-world-where-you-do-not-have-to-adhere-to-strict-covid-measures-well-i-have-created-a-map." class="section level3">
+<h3>Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well, I have created a map.</h3>
 <pre class="r"><code>#Transform data
 covid_measures &lt;- covid_more %&gt;%
 

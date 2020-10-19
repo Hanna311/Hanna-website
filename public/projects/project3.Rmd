@@ -27,9 +27,9 @@ library(readr)
 ```
 
 ![](https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png)
+## The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why. 
 
-
-# First, lets look at the data 
+## First, lets look at the data 
 ```{r, include=FALSE}
 world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")
 ```
@@ -38,7 +38,7 @@ world_happiness_report_2019 <- read_csv("~/desktop/Hanna-website/data/2019.csv")
 skim(world_happiness_report_2019)
 ```
 
-# Second, lets look at happiness by country
+## Second, lets look at happiness by country
 
 ```{r}
 whr_19 <- world_happiness_report_2019 %>% 
@@ -70,7 +70,9 @@ ggplot(by_continent,aes(
   geom_col()+
 
 #add labels
-  labs(x="Continent", y="Average Happiness Score",title = "Oceania is the happiest continent
+  labs(x="
+  Continent", y="Average Happiness Score
+  ",title = "Oceania is the happiest continent
        ", subtitle = "Average Happiness Score by country")+
     
 #add theme
@@ -81,9 +83,9 @@ ggplot(by_continent,aes(
     NULL
 ```
 
-# What makes people in Oceania so happy?
+## What makes people in Oceania so happy?
 
-## First let's look at the different countries within Oceania
+### First let's look at the different countries within Oceania
 ```{r}
 #filter data for Oceania
 oceania <- whr_19 %>% 
@@ -113,9 +115,6 @@ ggplot(oceania,
   theme(legend.position = "none")+
     
   NULL
-  
-  
-  
 ```
 
 ## People in New Zealand and Australia appear to be equally happy, but what is different in these countries? 
@@ -198,4 +197,4 @@ ggplot(whr_19,
          
 ```
 
-## Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. 
+## Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent in the world score very highly in all three categories. 
