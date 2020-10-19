@@ -24,7 +24,7 @@
       
       <guid>/projects/project1/</guid>
       <description>Covid 19
- CDC COVID-19 Public Use Data In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs  1. By age group, sex, and whether the patient had co-morbidities or not  2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.</description>
+ In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs:  1. By age group, sex, and whether the patient had co-morbidities or not  2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not  Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development ofthe pandemic within selected european countries.</description>
     </item>
     
     <item>

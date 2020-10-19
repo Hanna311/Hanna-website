@@ -47,12 +47,12 @@ library(viridis)
 
 ![Covid 19](https://img.jakpost.net/c/2020/05/20/2020_05_20_95707_1589954243._large.jpg)
 
-# CDC COVID-19 Public Use Data
-
-### In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs
+### In this project I will look at how covid-19 death rates are affected by variables such as gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs: 
 
 ### 1. By age group, sex, and whether the patient had co-morbidities or not
-### 2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
+### 2. By age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not
+
+### Given that the data for those graphs is provided only for the USA, I will consequently also have a look at the development ofthe pandemic within selected european countries. 
 
 ```{r, cache=TRUE}
 #load the data
@@ -201,7 +201,7 @@ ggplot(covid_icu, aes(x=death_rate,y=age_group))+
 
 # Covid cases in other countries 
 
-## Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.
+## Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at how Covid-19 has developed in Europe.
 
 ```{r}
 #download the data
@@ -343,7 +343,7 @@ ggplot(covid_measures_map, aes(map_id = region, fill = Stringency))+
   
 #add labels
   labs(title= "Most countries currently have intermediate measures in place",subtitle = "Current stringency level of covid measures in the world", x="",y="")+
-  coord_fixed(ratio = 1.7)+
+  coord_fixed(ratio = 1.35)+
   NULL
 ```
 
