@@ -13,7 +13,7 @@
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project6/</guid>
-      <description>In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong  First let’s download the data # download data listings &amp;lt;- read_csv(&amp;quot;http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz&amp;quot;)  Some data is not in the appropriate date format so we should transform it From characters to numericals
+      <description>In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong  First let’s download the data # download data listings &amp;lt;- read_csv(&amp;quot;http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz&amp;quot;)  Now let’s clean the data Some data is not in the appropriate date format so we should transform it From characters to numericals
 #converting variables to numericals listings &amp;lt;- listings %&amp;gt;% mutate(price = parse_number(price), host_response_time=parse_number(host_response_time), host_response_rate=parse_number(host_response_rate), host_acceptance_rate=parse_number(host_acceptance_rate), weekly_price=parse_number(weekly_price), monthly_price=parse_number(monthly_price), security_deposit=parse_number(security_deposit), cleaning_fee=parse_number(cleaning_fee), extra_people=parse_number(extra_people)) From characters to date</description>
     </item>
     
@@ -33,7 +33,7 @@
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project4/</guid>
-      <description>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.  Omega Group - Pay Discrimination At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives.</description>
+      <description>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.  Omega Group - Pay Discrimination  At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives.</description>
     </item>
     
     <item>

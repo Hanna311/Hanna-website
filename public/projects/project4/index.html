@@ -84,16 +84,17 @@
 
 
 <p><img src="https://cdn.lawyer-monthly.com/Lawyer-Monthly/wp-content/uploads/2017/11/Equality-Men-Earned-30-More-Than-Women-Last-Year.jpg" /></p>
-<div id="in-this-project-i-will-look-at-pay-discrimination-of-women.-first-by-looking-at-the-example-case-of-omega-plc-and-and-second-by-looking-at-data-for-the-uk-as-a-whole." class="section level2">
-<h2>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.</h2>
+<div id="in-this-project-i-will-look-at-pay-discrimination-of-women.-first-by-looking-at-the-example-case-of-omega-plc-and-and-second-by-looking-at-data-for-the-uk-as-a-whole." class="section level3">
+<h3><em>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.</em></h3>
 </div>
-<div id="omega-group---pay-discrimination" class="section level1">
-<h1>Omega Group - Pay Discrimination</h1>
+<div id="omega-group---pay-discrimination" class="section level3">
+<h3>Omega Group - Pay Discrimination</h3>
+</div>
 <div id="at-the-last-board-meeting-of-omega-group-plc.-the-headquarters-of-a-large-multinational-company-the-issue-was-raised-that-women-were-being-discriminated-in-the-company-in-the-sense-that-the-salaries-were-not-the-same-for-male-and-female-executives.-a-quick-analysis-of-a-sample-of-50-employees-of-which-24-men-and-26-women-revealed-that-the-average-salary-for-men-was-about-8700-higher-than-for-women.-this-seemed-like-a-considerable-difference-so-it-was-decided-that-a-further-analysis-of-the-company-salaries-was-warranted." class="section level3">
 <h3>At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted.</h3>
 </div>
-<div id="loading-the-data" class="section level2">
-<h2>Loading the data</h2>
+<div id="loading-the-data" class="section level3">
+<h3>Loading the data</h3>
 <pre class="r"><code>omega &lt;- read_csv(here::here(&quot;data&quot;, &quot;omega.csv&quot;))
 glimpse(omega) # examine the data frame</code></pre>
 <pre><code>## Rows: 50
@@ -102,8 +103,8 @@ glimpse(omega) # examine the data frame</code></pre>
 ## $ gender     &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;m…
 ## $ experience &lt;dbl&gt; 16, 25, 15, 33, 16, 19, 32, 34, 1, 44, 7, 14, 33, 19, 24, …</code></pre>
 </div>
-<div id="relationship-salary---gender" class="section level2">
-<h2>Relationship Salary - Gender ?</h2>
+<div id="relationship-salary---gender" class="section level3">
+<h3>Relationship Salary - Gender ?</h3>
 <p>Calculation of Summary Statistics on salary by gender (mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% condifence interval)</p>
 <pre class="r"><code>mosaic::favstats (salary ~ gender, data=omega)</code></pre>
 <pre><code>##   gender   min    Q1 median    Q3   max  mean   sd  n missing
@@ -142,6 +143,7 @@ salary_stats</code></pre>
 ## 1 female      64543.            7567.          26       -2.06          1484.
 ## 2 male        73239.            7463.          24       -2.07          1523.
 ## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
+</div>
 <div id="lets-visualise-these-values" class="section level3">
 <h3>Let’s visualise these values</h3>
 <pre class="r"><code>ggplot(salary_stats,
@@ -248,16 +250,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -1477.
-##  2         2  2250.
-##  3         3 -1196.
-##  4         4  1217.
-##  5         5 -2254.
-##  6         6 -3651.
-##  7         7  3126.
-##  8         8  1002.
-##  9         9  1300.
-## 10        10  4093.
+##  1         1   969.
+##  2         2  -494.
+##  3         3   564.
+##  4         4  -891.
+##  5         5  -494.
+##  6         6   886.
+##  7         7 -2089.
+##  8         8 -1056.
+##  9         9 -1089.
+## 10        10 -2667.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -291,9 +293,9 @@ obs_diff_means</code></pre>
 <li><p>the infer method shows that the probability of an observed difference in means of about 8697 is very unlikely where H0=there is no difference in means between genders holds true with p value = 0</p></li>
 </ul>
 </div>
+<div id="relationship-experience---gender" class="section level3">
+<h3>Relationship Experience - Gender?</h3>
 </div>
-<div id="relationship-experience---gender" class="section level2">
-<h2>Relationship Experience - Gender?</h2>
 <div id="at-the-board-meeting-someone-raised-the-issue-that-there-was-indeed-a-substantial-difference-between-male-and-female-salaries-but-that-this-was-attributable-to-other-reasons-such-as-differences-in-experience.-a-questionnaire-send-out-to-the-50-executives-in-the-sample-reveals-that-the-average-experience-of-the-men-is-approximately-21-years-whereas-the-women-only-have-about-7-years-experience-on-average-see-table-below." class="section level3">
 <h3>At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).</h3>
 <pre class="r"><code># Summary Statistics of salary by gender
@@ -436,16 +438,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -1477.
-##  2         2  2250.
-##  3         3 -1196.
-##  4         4  1217.
-##  5         5 -2254.
-##  6         6 -3651.
-##  7         7  3126.
-##  8         8  1002.
-##  9         9  1300.
-## 10        10  4093.
+##  1         1   969.
+##  2         2  -494.
+##  3         3   564.
+##  4         4  -891.
+##  5         5  -494.
+##  6         6   886.
+##  7         7 -2089.
+##  8         8 -1056.
+##  9         9 -1089.
+## 10        10 -2667.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -481,9 +483,9 @@ obs_diff_means_exp</code></pre>
 </ul>
 <p>There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination.</p>
 </div>
+<div id="relationship-salary---experience" class="section level3">
+<h3>Relationship Salary - Experience ?</h3>
 </div>
-<div id="relationship-salary---experience" class="section level2">
-<h2>Relationship Salary - Experience ?</h2>
 <div id="lets-have-a-closer-look-at-the-relationship-between-experience-in-salary-using-a-scatter-plot" class="section level3">
 <h3>Let’s have a closer look at the relationship between experience in salary using a scatter plot</h3>
 <pre class="r"><code># create plot from data omega where x axis shows experience, and y axis shows salary
@@ -511,18 +513,17 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
   NULL</code></pre>
 <p><img src="/projects/project4_files/figure-html/salary_exp_scatter-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
+<div id="uk-gender-pay-gap-2017" class="section level3">
+<h3>UK Gender Pay Gap 2017</h3>
 </div>
+<div id="the-example-of-omega-plc-has-inspired-me-to-take-a-closer-look-at-the-pay-gap-within-the-uk." class="section level3">
+<h3>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</h3>
 </div>
-<div id="uk-gender-pay-gap-2017" class="section level1">
-<h1>UK Gender Pay Gap 2017</h1>
-<div id="the-example-of-omega-plc-has-inspired-me-to-take-a-closer-look-at-the-pay-gap-within-the-uk." class="section level2">
-<h2>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</h2>
+<div id="luckily-enough-employers-with-250-or-more-employees-in-the-uk-must-publish-and-report-specific-figures-about-their-gender-pay-gap.lets-download-the-data-for-2017." class="section level3">
+<h3>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</h3>
 </div>
-<div id="luckily-enough-employers-with-250-or-more-employees-in-the-uk-must-publish-and-report-specific-figures-about-their-gender-pay-gap.lets-download-the-data-for-2017." class="section level2">
-<h2>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</h2>
-</div>
-<div id="load-data-and-look-at-it" class="section level2">
-<h2>Load data and look at it</h2>
+<div id="load-data-and-look-at-it" class="section level3">
+<h3>Load data and look at it</h3>
 <pre class="r"><code>#load data into r
 gender_pay_gap&lt;- read_csv(&quot;~/desktop/Hanna-website/data/paygap.csv&quot;)
 
@@ -942,8 +943,8 @@ glimpse(gender_pay_gap)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="lets-look-at-the-average-pay-gap-between-man-and-women-in-the-uk" class="section level2">
-<h2>Let’s look at the average pay gap between man and women in the UK</h2>
+<div id="lets-look-at-the-average-pay-gap-between-man-and-women-in-the-uk" class="section level3">
+<h3>Let’s look at the average pay gap between man and women in the UK</h3>
 <pre class="r"><code>#calculate average percentage difference in hourly wages in UK
 UK_pay_gap_hourly &lt;- gender_pay_gap %&gt;% 
  summarise(mean_diff_hourly=mean(DiffMeanHourlyPercent))
@@ -962,12 +963,12 @@ UK_pay_gap_hourly</code></pre>
 ##   mean_diff_bonus
 ##             &lt;dbl&gt;
 ## 1            20.1</code></pre>
+</div>
 <div id="on-average-women-are-paid-15-less-than-men-per-hour-and-receive-a-20-smaller-bonus." class="section level3">
 <h3>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</h3>
 </div>
-</div>
-<div id="does-the-pay-gap-differ-by-company-size" class="section level2">
-<h2>Does the pay gap differ by company size?</h2>
+<div id="does-the-pay-gap-differ-by-company-size" class="section level3">
+<h3>Does the pay gap differ by company size?</h3>
 <pre class="r"><code>#order the factor
 gender_pay_gap$EmployerSize &lt;- factor(x = gender_pay_gap$EmployerSize, levels = c(&quot;Less than 250&quot;,&quot;250 to 499&quot;, &quot;500 to 999&quot;, &quot;1000 to 4999&quot;, &quot;5000 to 19,999&quot;, &quot;20,000 or more&quot;, &quot;Not Provided&quot;))
 
@@ -990,8 +991,9 @@ ggplot(by_size, aes(x=EmployerSize,y=mean_hourly_size))+
   labs(title=&quot;Small companies have the smallest pay gaps&quot;, subtitle = &quot;Pay Gap in hourly wage by company size&quot;, x=&quot;Employer Size&quot;, y=&quot;% difference in hourly wage&quot;)</code></pre>
 <p><img src="/projects/project4_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="lets-have-a-look-at-whether-the-national-percentage-difference-in-hourly-wages-is-statistically-significant" class="section level2">
-<h2>Let’s have a look at whether the national percentage difference in hourly wages is statistically significant</h2>
+<div id="lets-have-a-look-at-whether-the-national-percentage-difference-in-hourly-wages-is-statistically-significant" class="section level3">
+<h3>Let’s have a look at whether the national percentage difference in hourly wages is statistically significant</h3>
+</div>
 <div id="calculate-statistics" class="section level3">
 <h3>Calculate statistics</h3>
 <pre class="r"><code>hourly_diff_stats &lt;- gender_pay_gap %&gt;% 
@@ -1037,14 +1039,12 @@ hourly_diff_stats</code></pre>
 ## mean of x 
 ##      14.3</code></pre>
 </div>
-</div>
-<div id="results" class="section level2">
-<h2>Results:</h2>
+<div id="results" class="section level3">
+<h3>Results:</h3>
 <ul>
 <li><p>Summary Statistics: The confidence Interval does not include 0 -&gt; the percentage difference in hourly wages between man and women is significant at a 95% level</p></li>
 <li><p>T.Test: t value is larger than 2, p value is &lt; 0.05, we can reject the H0 i.e. the percentage difference in hourly wages is 0</p></li>
 </ul>
-</div>
 </div>
 
                         </div>

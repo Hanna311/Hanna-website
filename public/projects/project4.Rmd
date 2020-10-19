@@ -47,13 +47,13 @@ library(tidyquant)
 
 ![](https://cdn.lawyer-monthly.com/Lawyer-Monthly/wp-content/uploads/2017/11/Equality-Men-Earned-30-More-Than-Women-Last-Year.jpg)
 
-## In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.
+### *In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.*
 
-# Omega Group - Pay Discrimination
+### Omega Group - Pay Discrimination
 
 ### At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted. 
 
-## Loading the data
+### Loading the data
 
 
 ```{r load_omega_data}
@@ -61,7 +61,7 @@ omega <- read_csv(here::here("data", "omega.csv"))
 glimpse(omega) # examine the data frame
 ```
 
-## Relationship Salary - Gender ?
+### Relationship Salary - Gender ?
 
 Calculation of Summary Statistics on salary by gender (mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% condifence interval)
 
@@ -220,7 +220,7 @@ Both methods show us that with 95% confidence we can say that there is a statist
 
 - the infer method shows that the probability of an observed difference in means of about 8697 is very unlikely where H0=there is no difference in means between genders holds true with p value = 0  
 
-## Relationship Experience - Gender?
+### Relationship Experience - Gender?
 
 ### At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).
 
@@ -375,7 +375,7 @@ Both methods show us that there is a statistically significant difference in exp
 There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination. 
 
 
-## Relationship Salary - Experience ?
+### Relationship Salary - Experience ?
 
 ### Let's have a closer look at the relationship between experience in salary using a scatter plot
 
@@ -405,13 +405,13 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
   NULL
 ```
 
-# UK Gender Pay Gap 2017
+### UK Gender Pay Gap 2017
 
-## The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.
+### The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.
 
-## Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let's download the data for 2017.
+### Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let's download the data for 2017.
 
-## Load data and look at it
+### Load data and look at it
 ```{r}
 #load data into r
 gender_pay_gap<- read_csv("~/desktop/Hanna-website/data/paygap.csv")
@@ -421,7 +421,7 @@ glimpse(gender_pay_gap)
 skim(gender_pay_gap)
 
 ```
-## Let's look at the average pay gap between man and women in the UK 
+### Let's look at the average pay gap between man and women in the UK 
 
 ```{r}
 #calculate average percentage difference in hourly wages in UK
@@ -439,7 +439,7 @@ UK_pay_gap_bonus
 
 ### On average women are paid 15% less than men per hour and receive a 20% smaller bonus. 
 
-## Does the pay gap differ by company size? 
+### Does the pay gap differ by company size? 
 
 
 ```{r}
@@ -465,7 +465,7 @@ ggplot(by_size, aes(x=EmployerSize,y=mean_hourly_size))+
   labs(title="Small companies have the smallest pay gaps", subtitle = "Pay Gap in hourly wage by company size", x="Employer Size", y="% difference in hourly wage")
 ```
 
-## Let's have a look at whether the national percentage difference in hourly wages is statistically significant
+### Let's have a look at whether the national percentage difference in hourly wages is statistically significant
 
 ### Calculate statistics 
 ```{r}
@@ -500,7 +500,7 @@ t.test(gender_pay_gap$DiffMeanHourlyPercent,
        conf.level=0.95)
 ```
 
-## Results: 
+### Results: 
 
 * Summary Statistics: The confidence Interval does not include 0 -> the percentage difference in hourly wages between man and women is significant at a 95% level
 
