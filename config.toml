@@ -62,6 +62,10 @@ disqusShortname = ""
      [[params.navigation.links]]
      name = "Equal Pay Analysis"
       url = "projects/project4"
+      
+      [[params.navigation.links]]
+     name = "Air BnB in Honk-Kong"
+      url = "projects/project6"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -119,11 +123,11 @@ disqusShortname = ""
      image = "projects/equalpay.jpg"
       url = "projects/project4"
 
-    #[[params.tiles.showcase]]
-     # title = "Consequat"
-      #subtitle = "Ipsum Dolor Sit Amet"
-      #image = "pic05.jpg"
-      #url = "blogs/ipsum"
+  [[params.tiles.showcase]]
+   title = "Air Bnb in Honk-Kong ⛺️"
+    subtitle = "What determines the price of an Air Bnb in HK"
+     image = "projects/hk.jpg"
+      url = "projects/project6"
 
     #[[params.tiles.showcase]]
       #title = "Etiam"

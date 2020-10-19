@@ -6,7 +6,17 @@
     <description>Recent content on Forty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Air BnB in Honk Kong ⛺️</title>
+      <link>/projects/project6/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project6/</guid>
+      <description>In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong  First let’s download the data # download data listings &amp;lt;- read_csv(&amp;quot;http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz&amp;quot;) Some data is ot in the appropriate date format so we should transform it From characters to numericals
+#converting variables to numericals listings &amp;lt;- listings %&amp;gt;% mutate(price = parse_number(price), host_response_time=parse_number(host_response_time), host_response_rate=parse_number(host_response_rate), host_acceptance_rate=parse_number(host_acceptance_rate), weekly_price=parse_number(weekly_price), monthly_price=parse_number(monthly_price), security_deposit=parse_number(security_deposit), cleaning_fee=parse_number(cleaning_fee), extra_people=parse_number(extra_people)) From characters to date</description>
+    </item>
+    
     <item>
       <title>Covid 19 Analysis 🦠</title>
       <link>/projects/project1/</link>
