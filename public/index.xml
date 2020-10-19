@@ -113,8 +113,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/project3/</guid>
-      <description>## The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.
-First, lets look at the data skim(world_happiness_report_2019)  Table 1: Data summary  Name world_happiness_report_20…  Number of rows 156  Number of columns 9  _______________________   Column type frequency:   character 1  numeric 8  ________________________   Group variables None    Variable type: character</description>
+      <description>The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.  First, lets look at the data skim(world_happiness_report_2019)  Table 1: Data summary  Name world_happiness_report_20…  Number of rows 156  Number of columns 9  _______________________   Column type frequency:   character 1  numeric 8  ________________________   Group variables None    Variable type: character</description>
     </item>
     
   </channel>

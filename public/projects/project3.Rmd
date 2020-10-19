@@ -27,6 +27,8 @@ library(readr)
 ```
 
 ![](https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png)
+
+
 ## The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why. 
 
 ## First, lets look at the data 
