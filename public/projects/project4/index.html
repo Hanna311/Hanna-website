@@ -238,18 +238,18 @@ t_test_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate   stat
-##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -3676.
-##  2         2  1713.
-##  3         3  2250.
-##  4         4 -1246.
-##  5         5   490.
-##  6         6 -1577.
-##  7         7  2721.
-##  8         8  -246.
-##  9         9  -147.
-## 10        10  2143.
+##    replicate     stat
+##        &lt;int&gt;    &lt;dbl&gt;
+##  1         1  1911.  
+##  2         2 -1907.  
+##  3         3  1936.  
+##  4         4   547.  
+##  5         5  -353.  
+##  6         6   878.  
+##  7         7  3523.  
+##  8         8    -6.28
+##  9         9  3258.  
+## 10        10  2423.  
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -414,18 +414,18 @@ t_test_exp_tidy</code></pre>
 
 null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
-##    replicate   stat
-##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -3676.
-##  2         2  1713.
-##  3         3  2250.
-##  4         4 -1246.
-##  5         5   490.
-##  6         6 -1577.
-##  7         7  2721.
-##  8         8  -246.
-##  9         9  -147.
-## 10        10  2143.
+##    replicate     stat
+##        &lt;int&gt;    &lt;dbl&gt;
+##  1         1  1911.  
+##  2         2 -1907.  
+##  3         3  1936.  
+##  4         4   547.  
+##  5         5  -353.  
+##  6         6   878.  
+##  7         7  3523.  
+##  8         8    -6.28
+##  9         9  3258.  
+## 10        10  2423.  
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -493,7 +493,7 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
 <p>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</p>
 <p>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</p>
 <div id="load-data-and-look-at-it" class="section level2">
-<h2>load data and look at it</h2>
+<h2>Load data and look at it</h2>
 <pre class="r"><code>#load data into r
 gender_pay_gap&lt;- read_csv(&quot;~/desktop/Hanna-website/data/paygap.csv&quot;)
 
@@ -957,8 +957,10 @@ ggplot(by_size, aes(x=EmployerSize,y=mean_hourly_size))+
   
 #add labels
   labs(title=&quot;Small companies have the smallest pay gaps&quot;, subtitle = &quot;Pay Gap in hourly wage by company size&quot;, x=&quot;Employer Size&quot;, y=&quot;% difference in hourly wage&quot;)</code></pre>
-<p><img src="/projects/project4_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" />
-## Let’s have a look at whether the national percentage difference in hourly wages is statistically significant</p>
+<p><img src="/projects/project4_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="lets-have-a-look-at-whether-the-national-percentage-difference-in-hourly-wages-is-statistically-significant" class="section level2">
+<h2>Let’s have a look at whether the national percentage difference in hourly wages is statistically significant</h2>
 <div id="calculate-statistics" class="section level3">
 <h3>Calculate statistics</h3>
 <pre class="r"><code>hourly_diff_stats &lt;- gender_pay_gap %&gt;% 

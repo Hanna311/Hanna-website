@@ -1,7 +1,7 @@
 ---
 title: "Covid 19 Analysis 🦠"
 author: "Your name goes here"
-date: "2020-10-18"
+date: "2020-10-19"
 output:
   html_document:
     theme: flatly
@@ -20,11 +20,13 @@ output:
 </div>
 <div id="cdc-covid-19-public-use-data" class="section level1">
 <h1>CDC COVID-19 Public Use Data</h1>
-<p>Given the data we have, I will produce two graphs that show death % rate:</p>
-<ol style="list-style-type: decimal">
-<li>by age group, sex, and whether the patient had co-morbidities or not</li>
-<li>by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.</li>
-</ol>
+<div id="in-this-project-i-will-look-at-to-what-extend-death-rates-of-covid-19-are-impacted-by-gender-age-cormorbidities-and-whether-the-patient-has-been-admitted-to-the-icu.-for-this-purpose-i-will-create-two-graphs" class="section level2">
+<h2>In this project I will look at to what extend death rates of covid 19 are impacted by gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs</h2>
+<div id="by-age-group-sex-and-whether-the-patient-had-co-morbidities-or-not" class="section level3">
+<h3>1. by age group, sex, and whether the patient had co-morbidities or not</h3>
+</div>
+<div id="by-age-group-sex-and-whether-the-patient-was-admited-to-intensive-care-unit-icu-or-not." class="section level3">
+<h3>2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.</h3>
 <pre class="r"><code>#load the data
 url &lt;- &quot;https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD&quot;
 
@@ -212,7 +214,10 @@ covid_data &lt;- vroom::vroom(url)%&gt;% # If vroom::vroom(url) doesn&#39;t work
 </tr>
 </tbody>
 </table>
-<p>By Age group, sex, and morbidity</p>
+</div>
+</div>
+<div id="by-age-group-sex-and-morbidity" class="section level2">
+<h2>By Age group, sex, and morbidity</h2>
 <pre class="r"><code>covid_data_clean_1 &lt;- covid_data %&gt;% 
 filter(death_yn!=&quot;Missing&quot;) %&gt;% 
   filter(death_yn!=&quot;Unknown&quot;) %&gt;% 
@@ -260,8 +265,10 @@ ggplot(covid_morb, aes(x=death_rate,y=age_group))+
   coord_fixed(ratio = 0.04)+
    theme(strip.background = element_rect(
      color=&quot;black&quot;, fill=&quot;grey&quot;, linetype=&quot;solid&quot;), panel.background = element_rect(fill = &quot;white&quot;),panel.grid=element_line(size=0.5, colour=&quot;#F1F1EB&quot;), panel.border = element_rect(fill=NA))</code></pre>
-<p><img src="/projects/project1_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" />
-By age group, sex and admissions to ICU</p>
+<p><img src="/projects/project1_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="by-age-group-sex-and-admissions-to-icu" class="section level2">
+<h2>By age group, sex and admissions to ICU</h2>
 <pre class="r"><code>covid_data_clean_2 &lt;- covid_data %&gt;% 
   filter(death_yn!=&quot;Missing&quot;) %&gt;% 
   filter(death_yn!=&quot;Unknown&quot;) %&gt;% 
@@ -314,9 +321,11 @@ ggplot(covid_icu, aes(x=death_rate,y=age_group))+
      color=&quot;black&quot;, fill=&quot;grey&quot;, linetype=&quot;solid&quot;), panel.background = element_rect(fill = &quot;white&quot;),panel.grid=element_line(size=0.5, colour=&quot;#F1F1EB&quot;), panel.border = element_rect(fill=NA))</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
+</div>
 <div id="covid-cases-in-other-countries" class="section level1">
 <h1>Covid cases in other countries</h1>
-<p>Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.</p>
+<div id="given-that-this-data-was-collected-by-the-cdc-it-only-provides-information-on-the-covid-epidemic-in-the-us.-as-an-european-i-would-like-to-have-a-closer-look-at-covid-in-europe." class="section level2">
+<h2>Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.</h2>
 <pre class="r"><code>#download the data
 covid_more&lt;- read_csv(&quot;~/desktop/Hanna-website/data/coviddata.csv&quot;)
 
@@ -917,7 +926,9 @@ skim(covid_more)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>First let’s compare the number of total cases in a few European countries</p>
+</div>
+<div id="first-lets-compare-the-number-of-total-cases-in-a-few-european-countries" class="section level2">
+<h2>First let’s compare the number of total cases in a few European countries</h2>
 <pre class="r"><code>covid_europe &lt;- covid_more %&gt;%
   
 #filter data for countries
@@ -942,8 +953,10 @@ skim(covid_more)</code></pre>
   theme_economist()+
   theme(legend.position = &quot;none&quot;)+
   NULL</code></pre>
-<p><img src="/projects/project1_files/figure-html/unnamed-chunk-8-1.png" width="648" style="display: block; margin: auto;" />
-Now that we know that the UK and France have the highest total number of covid cases. Let’s have a look at the measures these countries have put in place in response.</p>
+<p><img src="/projects/project1_files/figure-html/unnamed-chunk-8-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="now-that-we-know-that-the-uk-and-france-have-the-highest-total-number-of-covid-cases.-lets-have-a-look-at-the-measures-these-countries-have-put-in-place-in-response." class="section level2">
+<h2>Now that we know that the UK and France have the highest total number of covid cases. Let’s have a look at the measures these countries have put in place in response.</h2>
 <pre class="r"><code>ggplot(covid_europe, aes(x=date, y=stringency_index, color=location))+
   
 #choose graph type
@@ -961,9 +974,13 @@ Now that we know that the UK and France have the highest total number of covid c
   theme(legend.position = &quot;right&quot;)+
   theme(legend.title = element_blank())+
   NULL</code></pre>
-<p><img src="/projects/project1_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" />
-As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index.</p>
-<p>Now let’s have a look at whether strict measures have an effect on daily new cases.</p>
+<p><img src="/projects/project1_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="as-you-can-see-from-the-graph-the-uk-and-france-also-have-the-strictest-covid-measures-as-measured-by-the-stringency-index." class="section level2">
+<h2>As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index.</h2>
+</div>
+<div id="now-lets-have-a-look-at-whether-strict-measures-have-an-effect-on-daily-new-cases." class="section level2">
+<h2>Now let’s have a look at whether strict measures have an effect on daily new cases.</h2>
 <pre class="r"><code>ggplot(covid_europe, aes(x=date, y=new_cases, color=stringency_index))+
   
 #choose graph type
@@ -989,8 +1006,10 @@ As you can see from the Graph the UK and France also have the strictest covid me
   theme_economist()+
   
   NULL</code></pre>
-<p><img src="/projects/project1_files/figure-html/unnamed-chunk-10-1.png" width="648" style="display: block; margin: auto;" />
-Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map.</p>
+<p><img src="/projects/project1_files/figure-html/unnamed-chunk-10-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="now-onto-what-we-really-care-about-is-there-any-country-in-this-world-where-you-do-not-have-to-adhere-to-strict-covid-measures-well-i-have-created-a-map." class="section level2">
+<h2>Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map.</h2>
 <pre class="r"><code>#Transform data
 covid_measures &lt;- covid_more %&gt;%
 
@@ -1031,4 +1050,5 @@ ggplot(covid_measures_map, aes(map_id = region, fill = Stringency))+
   coord_fixed(ratio = 1.7)+
   NULL</code></pre>
 <p><img src="/projects/project1_files/figure-html/unnamed-chunk-13-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
 </div>

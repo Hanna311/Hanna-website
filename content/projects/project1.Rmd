@@ -49,10 +49,10 @@ library(viridis)
 
 # CDC COVID-19 Public Use Data
 
-Given the data we have, I will produce two graphs that show death % rate:
+## In this project I will look at to what extend death rates of covid 19 are impacted by gender, age, cormorbidities and whether the patient has been admitted to the ICU. For this purpose I will create two graphs
 
-1. by age group, sex, and whether the patient had co-morbidities or not
-1. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
+### 1. by age group, sex, and whether the patient had co-morbidities or not
+### 2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
 
 ```{r, cache=TRUE}
 #load the data
@@ -60,15 +60,16 @@ url <- "https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD"
 
 covid_data <- vroom::vroom(url)%>% # If vroom::vroom(url) doesn't work, use read_csv(url)
   clean_names()
-
-
 ```
+
 
 
 ```{r}
 skim (covid_data)
 ```
-By Age group, sex, and morbidity
+
+
+## By Age group, sex, and morbidity
 ``` {r}
 covid_data_clean_1 <- covid_data %>% 
 filter(death_yn!="Missing") %>% 
@@ -108,7 +109,9 @@ ggplot(covid_morb, aes(x=death_rate,y=age_group))+
    theme(strip.background = element_rect(
      color="black", fill="grey", linetype="solid"), panel.background = element_rect(fill = "white"),panel.grid=element_line(size=0.5, colour="#F1F1EB"), panel.border = element_rect(fill=NA))
 ```
-By age group, sex and admissions to ICU 
+
+
+## By age group, sex and admissions to ICU 
 
 ``` {r}
 covid_data_clean_2 <- covid_data %>% 
@@ -152,7 +155,7 @@ ggplot(covid_icu, aes(x=death_rate,y=age_group))+
 
 # Covid cases in other countries 
 
-Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.
+## Given that this data was collected by the CDC it only provides information on the covid epidemic in the US. As an european I would like to have a closer look at Covid in Europe.
 
 ```{r}
 #download the data
@@ -162,7 +165,8 @@ covid_more<- read_csv("~/desktop/Hanna-website/data/coviddata.csv")
 skim(covid_more)
 ```
 
-First let's compare the number of total cases in a few European countries
+
+## First let's compare the number of total cases in a few European countries
 ```{r}
 
 covid_europe <- covid_more %>%
@@ -193,7 +197,8 @@ ggplot(covid_europe, aes(x=date, y=total_cases, fill=location))+
   theme(legend.position = "none")+
   NULL
 ```
-Now that we know that the UK and France have the highest total number of covid cases. Let's have a look at the measures these countries have put in place in response. 
+
+## Now that we know that the UK and France have the highest total number of covid cases. Let's have a look at the measures these countries have put in place in response. 
 ```{r}
 ggplot(covid_europe, aes(x=date, y=stringency_index, color=location))+
   
@@ -213,9 +218,10 @@ ggplot(covid_europe, aes(x=date, y=stringency_index, color=location))+
   theme(legend.title = element_blank())+
   NULL
 ```
-As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index. 
 
-Now let's have a look at whether strict measures have an effect on daily new cases.
+## As you can see from the Graph the UK and France also have the strictest covid measures as measured by the stringency index. 
+
+## Now let's have a look at whether strict measures have an effect on daily new cases.
 ```{r}
 ggplot(covid_europe, aes(x=date, y=new_cases, color=stringency_index))+
   
@@ -243,7 +249,8 @@ ggplot(covid_europe, aes(x=date, y=new_cases, color=stringency_index))+
   
   NULL
 ```
-Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map. 
+
+## Now onto what we really care about: is there any country in this world where you do not have to adhere to strict covid measures? Well I have created a map. 
 
 ```{r}
 #Transform data

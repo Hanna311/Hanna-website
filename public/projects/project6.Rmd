@@ -332,7 +332,7 @@ ggplot(average_price_bed_type,
            y = reorder(bed_type,average_price_bed_type)))+
   geom_bar(stat="identity")+
   labs(title = "Listings with real beds have the highest 
-       average price?", 
+average price?", 
         x="Average price",y="Bed type
        ")+
   theme_economist()+
