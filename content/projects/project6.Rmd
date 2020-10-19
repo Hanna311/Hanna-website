@@ -62,7 +62,7 @@ library(sandwich)
 # download data
 listings <- read_csv("http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz")
 ```
-### Some data is ot in the appropriate date format so we should transform it 
+### Some data is not in the appropriate date format so we should transform it 
 
 From characters to numericals
 ```{r}
@@ -94,10 +94,6 @@ listings$room_type <- as.factor(listings$room_type)
 listings$bed_type <- as.factor(listings$bed_type)
 listings$cancellation_policy <- as.factor(listings$cancellation_policy)
 
-#count by property type
-listings %>% 
-count(property_type) %>% arrange(desc(n))
-
 #simplify property type
 listings <- listings %>%
   mutate(prop_type_simplified = case_when(
@@ -127,10 +123,6 @@ listings <- listings %>%
     TRUE ~ "Other"
   ))
 
-#Use the code below to check that prop_type_simplified was correctly made.
-listings %>%
-  count(property_type, prop_type_simplified) %>%
-  arrange(desc(n)) 
 ```
 
 ### Handling missing values 
@@ -176,7 +168,6 @@ Listings_variables_of_interest <- Listings_travel_purpose %>%
   select(c(host_is_superhost,
            neighbourhood_cleansed,
            prop_type_simplified,
-           room_type,
            price,
            review_scores_rating,
            reviews_per_month,
