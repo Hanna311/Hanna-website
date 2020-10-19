@@ -13,8 +13,17 @@
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project6/</guid>
-      <description>In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong  First let’s download the data # download data listings &amp;lt;- read_csv(&amp;quot;http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz&amp;quot;) Some data is not in the appropriate date format so we should transform it From characters to numericals
+      <description>In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong  First let’s download the data # download data listings &amp;lt;- read_csv(&amp;quot;http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz&amp;quot;)  Some data is not in the appropriate date format so we should transform it From characters to numericals
 #converting variables to numericals listings &amp;lt;- listings %&amp;gt;% mutate(price = parse_number(price), host_response_time=parse_number(host_response_time), host_response_rate=parse_number(host_response_rate), host_acceptance_rate=parse_number(host_acceptance_rate), weekly_price=parse_number(weekly_price), monthly_price=parse_number(monthly_price), security_deposit=parse_number(security_deposit), cleaning_fee=parse_number(cleaning_fee), extra_people=parse_number(extra_people)) From characters to date</description>
+    </item>
+    
+    <item>
+      <title>Equal Pay Analysis 👩💼👨</title>
+      <link>/projects/project4/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project4/</guid>
+      <description>Omega Group - Pay Discrimination At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women.</description>
     </item>
     
     <item>
@@ -26,15 +35,6 @@
       <description>Covid 19
  CDC COVID-19 Public Use Data Given the data we have, I will produce two graphs that show death % rate:
 by age group, sex, and whether the patient had co-morbidities or not by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.  #load the data url &amp;lt;- &amp;quot;https://data.cdc.gov/api/views/vbim-akqf/rows.csv?accessType=DOWNLOAD&amp;quot; covid_data &amp;lt;- vroom::vroom(url)%&amp;gt;% # If vroom::vroom(url) doesn&amp;#39;t work, use read_csv(url) clean_names() skim (covid_data)  Table 1: Data summary  Name covid_data  Number of rows 4481062  Number of columns 11  _______________________   Column type frequency:   character 8  Date 3  ________________________   Group variables None    Variable type: character</description>
-    </item>
-    
-    <item>
-      <title>Equal Pay Analysis 👩💼👨</title>
-      <link>/projects/project4/</link>
-      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project4/</guid>
-      <description>Omega Group - Pay Discrimination At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women.</description>
     </item>
     
     <item>

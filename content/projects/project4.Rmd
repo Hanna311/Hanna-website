@@ -408,7 +408,7 @@ The example of Omega Plc has inspired me to take a closer look at the pay gap wi
 
 Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let's download the data for 2017.
 
-##load data and look at it
+## load data and look at it
 ```{r}
 #load data into r
 gender_pay_gap<- read_csv("~/desktop/Hanna-website/data/paygap.csv")

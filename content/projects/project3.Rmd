@@ -197,3 +197,4 @@ ggplot(whr_19,
   theme(legend.position = "none")
          
 ```
+## Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. 

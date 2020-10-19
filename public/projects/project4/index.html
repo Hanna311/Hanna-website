@@ -240,16 +240,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -3130.
-##  2         2   969.
-##  3         3  -296.
-##  4         4 -1147.
-##  5         5  1630.
-##  6         6  2035.
-##  7         7  1457.
-##  8         8  3043.
-##  9         9 -3411.
-## 10        10  -370.
+##  1         1 -3676.
+##  2         2  1713.
+##  3         3  2250.
+##  4         4 -1246.
+##  5         5   490.
+##  6         6 -1577.
+##  7         7  2721.
+##  8         8  -246.
+##  9         9  -147.
+## 10        10  2143.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -416,16 +416,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -3130.
-##  2         2   969.
-##  3         3  -296.
-##  4         4 -1147.
-##  5         5  1630.
-##  6         6  2035.
-##  7         7  1457.
-##  8         8  3043.
-##  9         9 -3411.
-## 10        10  -370.
+##  1         1 -3676.
+##  2         2  1713.
+##  3         3  2250.
+##  4         4 -1246.
+##  5         5   490.
+##  6         6 -1577.
+##  7         7  2721.
+##  8         8  -246.
+##  9         9  -147.
+## 10        10  2143.
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -492,7 +492,8 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
 <h1>UK Gender Pay Gap 2017</h1>
 <p>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</p>
 <p>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</p>
-<p>##load data and look at it</p>
+<div id="load-data-and-look-at-it" class="section level2">
+<h2>load data and look at it</h2>
 <pre class="r"><code>#load data into r
 gender_pay_gap&lt;- read_csv(&quot;~/desktop/Hanna-website/data/paygap.csv&quot;)
 
@@ -911,6 +912,7 @@ glimpse(gender_pay_gap)</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
 <div id="lets-look-at-the-average-pay-gap-between-man-and-women-in-the-uk" class="section level2">
 <h2>Let’s look at the average pay gap between man and women in the UK</h2>
 <pre class="r"><code>#calculate average percentage difference in hourly wages in UK
