@@ -243,7 +243,6 @@ summary(bin_extra_people)
 
 
 # Now we can finally visualise the data
-
 ## Where are the listings in our dataset located?
 
 ```{r}

@@ -360,6 +360,7 @@ obs_diff_means %>%
   get_p_value(obs_stat = obs_diff_means_exp, direction = "both")
   
 ```
+
 ### Conclusion: 
 
 Both methods show us that there is a statistically significant difference in experience between men and women
