@@ -203,4 +203,4 @@ ggplot(whr_19,
 
 ### Conclusion
 
-- Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent in the world score very highly in all three categories. 
+- Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent (Oceania is in purple on all graphs) in the world score very highly in all three categories. 
