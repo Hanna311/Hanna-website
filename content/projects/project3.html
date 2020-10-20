@@ -6,11 +6,9 @@ output: html_document
 
 
 <p><img src="https://miro.medium.com/max/6676/1*x_63htcQx3QGZhj2uWZZaA.png" /></p>
-<div id="the-world-happiness-report-provides-interesting-data-on-the-happiness-level-in-several-countries.-moreover-it-also-contains-data-on-explanatory-variables-for-the-happiness-scores.-in-the-following-project-i-wish-to-explore-which-continent-is-the-happiest-in-the-world-and-why." class="section level2">
-<h2><em>The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.</em></h2>
-</div>
-<div id="first-lets-look-at-the-data" class="section level2">
-<h2>First, lets look at the data</h2>
+<p><em>The world happiness report provides interesting data on the happiness level in several countries. Moreover, it also contains data on explanatory variables for the happiness scores. In the following project I wish to explore which continent is the happiest in the world and why.</em></p>
+<div id="first-lets-look-at-the-data" class="section level3">
+<h3>First, lets look at the data</h3>
 <pre class="r"><code>skim(world_happiness_report_2019)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 1: </span>Data summary</caption>
@@ -205,8 +203,8 @@ output: html_document
 </tbody>
 </table>
 </div>
-<div id="second-lets-look-at-happiness-by-country" class="section level2">
-<h2>Second, lets look at happiness by country</h2>
+<div id="second-lets-look-at-happiness-by-country" class="section level3">
+<h3>Second, lets look at happiness by country</h3>
 <pre class="r"><code>whr_19 &lt;- world_happiness_report_2019 %&gt;% 
   rename(country = `Country or region`) %&gt;%  
   rename(GDP= `GDP per capita`) %&gt;% 
@@ -249,8 +247,9 @@ ggplot(by_continent,aes(
     NULL</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="what-makes-people-in-oceania-so-happy" class="section level2">
-<h2>What makes people in Oceania so happy?</h2>
+<div id="what-makes-people-in-oceania-so-happy" class="section level3">
+<h3>What makes people in Oceania so happy?</h3>
+</div>
 <div id="first-lets-look-at-the-different-countries-within-oceania" class="section level3">
 <h3>First let’s look at the different countries within Oceania</h3>
 <pre class="r"><code>#filter data for Oceania
@@ -283,11 +282,14 @@ ggplot(oceania,
   NULL</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<ul>
+<li>People in New Zealand and Australia appear to be equally happy</li>
+</ul>
 </div>
-<div id="people-in-new-zealand-and-australia-appear-to-be-equally-happy-but-what-is-different-in-these-countries" class="section level2">
-<h2>People in New Zealand and Australia appear to be equally happy, but what is different in these countries?</h2>
-<div id="lets-plot-the-relationship-between-happiness-score-and-a-few-key-indicators" class="section level3">
-<h3>Let’s plot the relationship between Happiness Score and a few key indicators</h3>
+<div id="lets-look-at-possible-reasons-why-people-in-oceania-are-so-happy" class="section level3">
+<h3>Let’s look at possible reasons why people in Oceania are so happy</h3>
 <pre class="r"><code>#create subset for highlighted points
 highlight_oceania &lt;- whr_19 %&gt;% 
   filter(continent==&quot;Oceania&quot;)
@@ -314,8 +316,11 @@ ggplot(whr_19,
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
-<div id="the-graph-shows-that-unsurprisingly-there-is-a-strong-positive-relationship-between-gdp-per-capita-and-happiness-score.-you-can-see-that-many-of-the-countries-in-the-continents-that-have-a-high-average-happiness-score-are-positioned-in-the-upper-corner-of-the-graph-e.g.-oceania-represented-by-larger-points-while-the-countries-in-the-continents-that-have-a-low-average-happiness-score-are-in-the-lower-corner." class="section level3">
-<h3>The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner.</h3>
+<div id="conclusion-1" class="section level3">
+<h3>Conclusion</h3>
+<ul>
+<li>The graph shows that unsurprisingly, there is a strong positive relationship between GDP per capita and Happiness Score. You can see that many of the countries in the continents that have a high average happiness score are positioned in the upper corner of the graph e.g. Oceania (represented by larger points), while the countries in the continents that have a low average happiness score are in the lower corner.</li>
+</ul>
 </div>
 <div id="but-money-cant-be-everything.-so-lets-look-at-a-few-more-variables-but-to-not-forget-about-gdp-the-size-of-the-point-will-now-represent-their-gdp" class="section level3">
 <h3>But money can’t be everything. So let’s look at a few more variables, but to not forget about GDP the size of the point will now represent their GDP</h3>
@@ -355,7 +360,9 @@ ggplot(whr_19,
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/projects/project3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
-</div>
-<div id="overall-we-can-conclude-that-a-high-gdp-social-support-and-a-high-life-expectancy-contribute-to-the-overall-happiness-within-a-country.-we-can-see-that-two-countries-on-the-happiest-continent-in-the-world-score-very-highly-in-all-three-categories." class="section level2">
-<h2>Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent in the world score very highly in all three categories.</h2>
+<div id="conclusion-2" class="section level3">
+<h3>Conclusion</h3>
+<ul>
+<li>Overall we can conclude that a high GDP, social support and a high life expectancy contribute to the overall happiness within a country. We can see that two countries on the happiest continent in the world score very highly in all three categories.</li>
+</ul>
 </div>

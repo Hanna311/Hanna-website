@@ -84,14 +84,10 @@
 
 
 <p><img src="https://cdn.lawyer-monthly.com/Lawyer-Monthly/wp-content/uploads/2017/11/Equality-Men-Earned-30-More-Than-Women-Last-Year.jpg" /></p>
-<div id="in-this-project-i-will-look-at-pay-discrimination-of-women.-first-by-looking-at-the-example-case-of-omega-plc-and-and-second-by-looking-at-data-for-the-uk-as-a-whole." class="section level3">
-<h3><em>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.</em></h3>
-</div>
+<p><em>In this project I will look at pay discrimination of women. First by looking at the example case of Omega Plc and and second by looking at data for the UK as a whole.</em></p>
 <div id="omega-group---pay-discrimination" class="section level3">
 <h3>Omega Group - Pay Discrimination</h3>
-</div>
-<div id="at-the-last-board-meeting-of-omega-group-plc.-the-headquarters-of-a-large-multinational-company-the-issue-was-raised-that-women-were-being-discriminated-in-the-company-in-the-sense-that-the-salaries-were-not-the-same-for-male-and-female-executives.-a-quick-analysis-of-a-sample-of-50-employees-of-which-24-men-and-26-women-revealed-that-the-average-salary-for-men-was-about-8700-higher-than-for-women.-this-seemed-like-a-considerable-difference-so-it-was-decided-that-a-further-analysis-of-the-company-salaries-was-warranted." class="section level3">
-<h3>At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted.</h3>
+<p>At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted.</p>
 </div>
 <div id="loading-the-data" class="section level3">
 <h3>Loading the data</h3>
@@ -172,11 +168,12 @@ salary_stats</code></pre>
 </div>
 <div id="conclusion" class="section level3">
 <h3>Conclusion</h3>
-<p>On average the salary for men and women differs by almost 10k. However, this does not mean that the difference is necessarily significant. To evaluate whether the difference is significant we can look at the confidence intervals:</p>
-<p>The confidence Intervals do not overlap. Thus with 95% confidence we can conclude that there is a difference in population means between male and females salaries.</p>
-<p>Another way of determining whether the difference in salaries is significant is to test the null hypothesis=</p>
-<p>Mean difference in salaries is zero.</p>
-<p>We can test this using 1) t.test() and 2) the simulation method from the infer package</p>
+<ul>
+<li><p>On average the salary for men and women differs by almost 10k. However, this does not mean that the difference is necessarily significant. To evaluate whether the difference is significant we can look at the confidence intervals:</p></li>
+<li><p>The confidence Intervals do not overlap. Thus with 95% confidence we can conclude that there is a difference in population means between male and females salaries.</p></li>
+<li><p>Another way of determining whether the difference in salaries is significant is to test the null hypothesis= Mean difference in salaries is zero.</p></li>
+<li><p>We can test this using 1) t.test() and 2) the simulation method from the infer package</p></li>
+</ul>
 </div>
 <div id="hypothesis-testing-using-t.test" class="section level3">
 <h3>1) hypothesis testing using t.test()</h3>
@@ -250,16 +247,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1   969.
-##  2         2  -494.
-##  3         3   564.
-##  4         4  -891.
-##  5         5  -494.
-##  6         6   886.
-##  7         7 -2089.
-##  8         8 -1056.
-##  9         9 -1089.
-## 10        10 -2667.
+##  1         1 3176. 
+##  2         2 2771. 
+##  3         3 1944. 
+##  4         4 1985. 
+##  5         5 -139. 
+##  6         6 1415. 
+##  7         7  481. 
+##  8         8 -833. 
+##  9         9  -72.4
+## 10        10 2440. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># visualize the p-value 
 
@@ -295,9 +292,7 @@ obs_diff_means</code></pre>
 </div>
 <div id="relationship-experience---gender" class="section level3">
 <h3>Relationship Experience - Gender?</h3>
-</div>
-<div id="at-the-board-meeting-someone-raised-the-issue-that-there-was-indeed-a-substantial-difference-between-male-and-female-salaries-but-that-this-was-attributable-to-other-reasons-such-as-differences-in-experience.-a-questionnaire-send-out-to-the-50-executives-in-the-sample-reveals-that-the-average-experience-of-the-men-is-approximately-21-years-whereas-the-women-only-have-about-7-years-experience-on-average-see-table-below." class="section level3">
-<h3>At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).</h3>
+<p>At the board meeting, someone raised the issue that there was indeed a substantial difference between male and female salaries, but that this was attributable to other reasons such as differences in experience. A questionnaire send out to the 50 executives in the sample reveals that the average experience of the men is approximately 21 years, whereas the women only have about 7 years experience on average (see table below).</p>
 <pre class="r"><code># Summary Statistics of salary by gender
 favstats (experience ~ gender, data=omega)</code></pre>
 <pre><code>##   gender min    Q1 median   Q3 max  mean    sd  n missing
@@ -438,16 +433,16 @@ null_distribution</code></pre>
 <pre><code>## # A tibble: 1,000 x 2
 ##    replicate   stat
 ##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1   969.
-##  2         2  -494.
-##  3         3   564.
-##  4         4  -891.
-##  5         5  -494.
-##  6         6   886.
-##  7         7 -2089.
-##  8         8 -1056.
-##  9         9 -1089.
-## 10        10 -2667.
+##  1         1 3176. 
+##  2         2 2771. 
+##  3         3 1944. 
+##  4         4 1985. 
+##  5         5 -139. 
+##  6         6 1415. 
+##  7         7  481. 
+##  8         8 -833. 
+##  9         9  -72.4
+## 10        10 2440. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code># Visualize p value 
 
@@ -477,17 +472,15 @@ obs_diff_means_exp</code></pre>
 <h3>Conclusion:</h3>
 <p>Both methods show us that there is a statistically significant difference in experience between men and women</p>
 <ul>
-<li><p>summary statistics show that the confidence intervals do not overlap</p></li>
-<li><p>the t.test method shows a p value &lt; 0.05, a t value whose absolute value is higher than 2, and the confidence interval does not include 0</p></li>
-<li><p>the infer method shows that the probability of an observed difference in means of about 14 years is very unlikely (p value = 0) when H0=there is no difference in experience between genders holds true</p></li>
+<li><p>Summary statistics show that the confidence intervals do not overlap</p></li>
+<li><p>The t.test method shows a p value &lt; 0.05, a t value whose absolute value is higher than 2, and the confidence interval does not include 0</p></li>
+<li><p>The infer method shows that the probability of an observed difference in means of about 14 years is very unlikely (p value = 0) when H0=there is no difference in experience between genders holds true</p></li>
+<li><p>There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination.</p></li>
 </ul>
-<p>There is still a significant difference in female and male salaries, however, this additional analysis shows that this difference is partly caused by the higher years of experience of the male executives. Overall, it weakens the argument that the difference in pay is solely due to discrimination.</p>
 </div>
 <div id="relationship-salary---experience" class="section level3">
 <h3>Relationship Salary - Experience ?</h3>
-</div>
-<div id="lets-have-a-closer-look-at-the-relationship-between-experience-in-salary-using-a-scatter-plot" class="section level3">
-<h3>Let’s have a closer look at the relationship between experience in salary using a scatter plot</h3>
+<p>Let’s have a closer look at the relationship between experience in salary using a scatter plot</p>
 <pre class="r"><code># create plot from data omega where x axis shows experience, and y axis shows salary
 
 ggplot(omega, aes(x = experience, y=salary,color=gender))+
@@ -515,12 +508,8 @@ ggplot(omega, aes(x = experience, y=salary,color=gender))+
 </div>
 <div id="uk-gender-pay-gap-2017" class="section level3">
 <h3>UK Gender Pay Gap 2017</h3>
-</div>
-<div id="the-example-of-omega-plc-has-inspired-me-to-take-a-closer-look-at-the-pay-gap-within-the-uk." class="section level3">
-<h3>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</h3>
-</div>
-<div id="luckily-enough-employers-with-250-or-more-employees-in-the-uk-must-publish-and-report-specific-figures-about-their-gender-pay-gap.lets-download-the-data-for-2017." class="section level3">
-<h3>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</h3>
+<p>The example of Omega Plc has inspired me to take a closer look at the pay gap within the UK.</p>
+<p>Luckily enough, employers with 250 or more employees in the UK must publish and report specific figures about their gender pay gap.Let’s download the data for 2017.</p>
 </div>
 <div id="load-data-and-look-at-it" class="section level3">
 <h3>Load data and look at it</h3>
@@ -964,8 +953,11 @@ UK_pay_gap_hourly</code></pre>
 ##             &lt;dbl&gt;
 ## 1            20.1</code></pre>
 </div>
-<div id="on-average-women-are-paid-15-less-than-men-per-hour-and-receive-a-20-smaller-bonus." class="section level3">
-<h3>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</h3>
+<div id="conclusion-3" class="section level3">
+<h3>Conclusion</h3>
+<ul>
+<li>On average women are paid 15% less than men per hour and receive a 20% smaller bonus.</li>
+</ul>
 </div>
 <div id="does-the-pay-gap-differ-by-company-size" class="section level3">
 <h3>Does the pay gap differ by company size?</h3>
@@ -1020,8 +1012,8 @@ hourly_diff_stats</code></pre>
 ## 1             14.3             14.9       10565       -1.96          0.145
 ## # … with 3 more variables: margin_of_error &lt;dbl&gt;, CI_high &lt;dbl&gt;, CI_low &lt;dbl&gt;</code></pre>
 </div>
-<div id="now-lets-do-the-hypothesis-testing-first-using-t.test-1" class="section level3">
-<h3>Now let’s do the hypothesis testing, first using t.test()</h3>
+<div id="now-lets-do-the-hypothesis-testing-using-t.test" class="section level3">
+<h3>Now let’s do the hypothesis testing using t.test()</h3>
 <p>H0: the percentage difference in hourly wages is 0</p>
 <pre class="r"><code>t.test(gender_pay_gap$DiffMeanHourlyPercent, 
        mu=0, 

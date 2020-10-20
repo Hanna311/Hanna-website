@@ -55,17 +55,17 @@ library(lmtest)
 library(sandwich)
 ```
 
-## In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong 
+*In this analysis we will have a look at how different variables affect the price of an AirBnB in Honkong* 
 
-# First let's download the data
+### First let's download the data
 ```{r}
 # download data
 listings <- read_csv("http://data.insideairbnb.com/china/hk/hong-kong/2020-06-15/data/listings.csv.gz")
 ```
 
-# Now let's clean the data
+### Now let's clean the data
 
-## Some data is not in the appropriate date format so we should transform it 
+### Some data is not in the appropriate date format so we should transform it 
 
 From characters to numericals
 ```{r}
@@ -128,7 +128,7 @@ listings <- listings %>%
 
 ```
 
-## Handling missing values 
+### Handling missing values 
 
 Converting Security deposit and cleaning fee deposit NAs to 0 as we assume that NA means that no cleaning fee or security deposit has to be paid. There are 5677 missing values for security deposit 5055 missing values for cleaning fee. 
 ```{r}
@@ -148,7 +148,7 @@ listings <- listings %>%
 
 ```
 
-## Removing Listings Not for Travel Purposes
+### Removing Listings Not for Travel Purposes
 
 ```{r}
 #Filter out listings for travel purposes
@@ -156,7 +156,7 @@ Listings_travel_purpose <- listings %>%
   filter(minimum_nights<=4)
 ```
 
-## Since this is a very large data set let's choose a few variables we find interesting first
+### Since this is a very large data set let's choose a few variables we find interesting first
 ```{r}
 Listings_variables_of_interest <- Listings_travel_purpose %>% 
 #select the variables we want to analyze
@@ -185,7 +185,7 @@ Listings_variables_of_interest <- Listings_travel_purpose %>%
            )) 
 ```
 
-## To make the visualisation more meaningful we will put some of the data in buckets
+### To make the visualisation more meaningful we will put some of the data in buckets
 
 ```{r}
 #Bin ratings
@@ -245,8 +245,9 @@ summary(bin_extra_people)
 
 
 
-# Now we can finally visualise the data
-## Where are the listings in our dataset located?
+### Now we can finally visualise the data
+
+### 1. Where are the listings in our dataset located?
 
 ```{r}
 leaflet(data = filter(listings, minimum_nights <= 4)) %>% 
@@ -260,7 +261,7 @@ leaflet(data = filter(listings, minimum_nights <= 4)) %>%
                    label = ~property_type)
 ```
 
-## What is the effect of reviews per month / review scores and number on price?
+### 2. What is the effect of reviews per month / review scores on price?
 
 ### Review Scores
 ```{r}
@@ -319,7 +320,7 @@ theme_economist()+
 
 ```
 
-## What is the effect of bed type on price?
+### 3. What is the effect of bed type on price?
 ```{r}
 #creating averages for different bed types
 average_price_bed_type <- Listings_variables_of_interest %>% 
@@ -341,7 +342,7 @@ average price?",
   NULL
 ```
 
-## What is the effect of property type on price?
+### 4. What is the effect of property type on price?
 ```{r}
 #creating averages for different property types
 average_price_property_type <- Listings_variables_of_interest %>% 
@@ -366,7 +367,7 @@ mean price",
   NULL
 ```
 
-## What is the effect of being a superhost on price?
+## 5. What is the effect of being a superhost on price?
 ```{r}
 #creating averages for different property types
 average_host_is_superhost <- Listings_variables_of_interest %>% 
@@ -387,7 +388,7 @@ ggplot(average_host_is_superhost,
   NULL
 ```
 
-## What is the effect of location on price?
+## 6. What is the effect of location on price?
 ```{r}
 #group by neighbourhood
 price_neighbourhood <- Listings_variables_of_interest %>% 
