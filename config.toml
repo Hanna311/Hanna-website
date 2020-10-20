@@ -147,7 +147,7 @@ disqusShortname = ""
   [params.two]
     enable = true
     title = "About this website"
-    subtitle = """I hope to use this website to provide some interesting insights from data on topics that I am personally interested in. The analysis of the pay gaps at Omega and in UK for example is based on my interest of equality in the workspace. I am excited to learn more about the topics that interest me and I hope that you will find some of it interesting as well."""
+    subtitle = """I hope to use this website to provide some interesting insights from data on topics that I am personally interested in. The analysis of the pay gaps at Omega and in UK for example is based on my interest in equality in the workspace. I am excited to learn more about the topics that interest me and I hope that you will find some of it interesting as well."""
     buttonText = "See Equal Pay Analysis"
     url = "projects/project4"
 
